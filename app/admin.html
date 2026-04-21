@@ -419,19 +419,22 @@
             }
 
             listEl.innerHTML = courses.map(c => `
-                <div class="flex items-center gap-4 p-3 border border-stone-100 rounded-2xl hover:border-primary-container hover:shadow-md transition-all group bg-white cursor-pointer">
-                    <img src="${c.thumbnail_url || 'https://via.placeholder.com/150'}" class="w-14 h-14 rounded-xl object-cover border border-stone-100">
-                    <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-4 p-3 border border-stone-100 rounded-2xl hover:border-primary-container hover:shadow-md transition-all group bg-white">
+                    <img src="${c.thumbnail_url || 'https://via.placeholder.com/150'}" class="w-14 h-14 rounded-xl object-cover border border-stone-100 cursor-pointer" onclick="window.location.href='course-detail.html?id=${c.id}'">
+                    <div class="flex-1 min-w-0 cursor-pointer" onclick="window.location.href='course-detail.html?id=${c.id}'">
                         <h4 class="font-bold text-stone-900 truncate group-hover:text-primary transition-colors">${c.title}</h4>
                         <div class="flex items-center gap-2 mt-1">
                             <span class="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary-container/20 px-2 py-0.5 rounded-md">${c.category}</span>
                             <span class="text-xs text-stone-500 truncate">${c.level}</span>
                         </div>
                     </div>
-                    <div class="text-right pl-2 border-l border-stone-100">
+                    <div class="text-right pl-2 pr-2 border-l border-stone-100">
                         <span class="font-bold text-stone-900 text-sm block">Rp ${parseInt(c.price).toLocaleString('id-ID')}</span>
                         <span class="text-[10px] text-stone-400">Aktif</span>
                     </div>
+                    <button onclick="deleteCourse('${c.id}')" title="Hapus Kelas" class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-500 hover:text-white">
+                        <span class="material-symbols-outlined text-[20px]">delete</span>
+                    </button>
                 </div>
             `).join('');
 

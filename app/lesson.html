@@ -123,40 +123,15 @@
 <!-- Video Player Column -->
 <section class="lg:col-span-8 flex flex-col gap-8">
 <!-- Large Video Player with Tactile Design -->
-<div class="relative aspect-video bg-surface-container-low rounded-xl overflow-hidden shadow-2xl group border-8 border-surface-container">
-<img class="w-full h-full object-cover opacity-90" data-alt="cinematic shot of a minimalist design studio with soft sunlight casting long shadows across a warm wooden desk and cream colored walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA79C3_5C3RmUCbpr5WfXrVpSONHwGTGGl-mUy5r5xlxQIaNOd2R0Rv31x98Gx0wRLVQiFvgCmdLXDeLWOIusih4-WizjnOY7upYjESpFAG0hB1FRH8cBYP0-haBxyzDktK1VOSiwKTTAKfHQVBf5VcXO9XGy2gDsdBsFXqrBT5YL2bPHnoFul4bEGZ_Pl3kB2UmCmEmJM1CK2MMdGi9sTaLcqfbTYQmzIc3DSN85qvjscBquGfgAaLew7NBeydnUKNa9cgL2vUGkc"/>
-<!-- Custom Player UI Overlay -->
-<div class="absolute inset-0 bg-gradient-to-t from-on-surface/40 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity">
-<div class="flex items-center gap-6">
-<button class="bg-primary-container text-on-primary-container w-14 h-14 rounded-full flex items-center justify-center shadow-lg transform active:scale-90 transition-transform">
-<span class="material-symbols-outlined text-3xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-</button>
-<div class="flex-1">
-<div class="h-2 w-full bg-white/30 rounded-full overflow-hidden">
-<div class="h-full w-1/3 bg-primary-container rounded-full shadow-[0_0_10px_rgba(242,201,76,0.6)]"></div>
-</div>
-<div class="flex justify-between mt-2 text-xs font-bold text-white tracking-widest uppercase">
-<span>12:45</span>
-<span>42:10</span>
-</div>
-</div>
-<button class="text-white material-symbols-outlined" data-icon="settings">settings</button>
-<button class="text-white material-symbols-outlined" data-icon="fullscreen">fullscreen</button>
-</div>
-</div>
-<!-- Centered Play Button (Initial State) -->
-<div class="absolute inset-0 flex items-center justify-center group-hover:hidden">
-<div class="w-24 h-24 rounded-full bg-primary-container/90 backdrop-blur-md flex items-center justify-center text-on-primary-container shadow-2xl">
-<span class="material-symbols-outlined text-5xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-</div>
-</div>
+<div id="videoContainer" class="relative aspect-video bg-black rounded-xl overflow-hidden shadow-2xl group border-8 border-surface-container flex items-center justify-center">
+    <span class="material-symbols-outlined text-white animate-spin text-5xl">sync</span>
 </div>
 <!-- Lesson Info Content -->
 <div class="bg-surface-container-lowest p-10 rounded-xl">
-<h1 class="text-4xl font-extrabold text-on-surface tracking-tight mb-4">The Psychology of Warm Palettes</h1>
-<p class="text-lg text-on-surface-variant leading-relaxed mb-8">
-                        In this lesson, we explore how earthy tones and warm yellows create a sense of trust and approachability in UI design. We'll examine the historical significance of these colors in physical media and how to translate that tactile feeling into digital interfaces.
-                    </p>
+<h1 id="lessonTitle" class="text-4xl font-extrabold text-on-surface tracking-tight mb-4">Memuat materi...</h1>
+<p id="lessonDesc" class="text-lg text-on-surface-variant leading-relaxed mb-8">
+    Tunggu sebentar...
+</p>
 <div class="flex flex-wrap gap-4">
 <div class="flex items-center gap-2 bg-secondary-container/50 px-4 py-2 rounded-full text-on-secondary-container font-semibold text-sm">
 <span class="material-symbols-outlined text-lg" data-icon="download">download</span>
@@ -180,64 +155,8 @@
 <span class="text-sm font-bold text-primary">65%</span>
 </div>
 </div>
-<div class="flex-1 overflow-y-auto p-4 space-y-4">
-<!-- Module 1 -->
-<div class="space-y-2">
-<div class="flex items-center gap-3 px-4 py-2">
-<span class="text-[10px] font-black uppercase tracking-widest text-outline">Module 1</span>
-<div class="h-px flex-1 bg-outline-variant/20"></div>
-</div>
-<div class="flex items-center gap-4 px-4 py-4 rounded-lg bg-surface-container-highest/50">
-<div class="flex-shrink-0 w-8 h-8 rounded-full bg-secondary-fixed-dim/40 flex items-center justify-center">
-<span class="material-symbols-outlined text-on-secondary-fixed-variant text-sm" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
-</div>
-<div class="flex-1">
-<p class="text-sm font-bold text-on-surface-variant">Introduction to Tactile UI</p>
-<p class="text-[10px] text-outline font-medium">12 mins • COMPLETED</p>
-</div>
-</div>
-</div>
-<!-- Module 2 -->
-<div class="space-y-2">
-<div class="flex items-center gap-3 px-4 py-2">
-<span class="text-[10px] font-black uppercase tracking-widest text-outline">Module 2</span>
-<div class="h-px flex-1 bg-outline-variant/20"></div>
-</div>
-<div class="flex items-center gap-4 px-4 py-4 rounded-lg bg-surface-container-lowest shadow-sm border border-primary/10">
-<div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
-<span class="material-symbols-outlined text-on-primary-container text-sm" data-icon="play_circle" style="font-variation-settings: 'FILL' 1;">play_circle</span>
-</div>
-<div class="flex-1">
-<p class="text-sm font-bold text-primary">The Psychology of Warm Palettes</p>
-<p class="text-[10px] text-primary/70 font-medium">42 mins • CURRENTLY WATCHING</p>
-</div>
-</div>
-<div class="flex items-center gap-4 px-4 py-4 rounded-lg hover:bg-surface-container-highest/40 transition-colors cursor-pointer">
-<div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center">
-<span class="material-symbols-outlined text-outline text-sm" data-icon="lock">lock</span>
-</div>
-<div class="flex-1">
-<p class="text-sm font-bold text-on-surface-variant">The Rule of Three Surfaces</p>
-<p class="text-[10px] text-outline font-medium">28 mins</p>
-</div>
-</div>
-</div>
-<!-- Module 3 -->
-<div class="space-y-2">
-<div class="flex items-center gap-3 px-4 py-2">
-<span class="text-[10px] font-black uppercase tracking-widest text-outline">Module 3</span>
-<div class="h-px flex-1 bg-outline-variant/20"></div>
-</div>
-<div class="flex items-center gap-4 px-4 py-4 rounded-lg opacity-60">
-<div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center">
-<span class="material-symbols-outlined text-outline text-sm" data-icon="lock">lock</span>
-</div>
-<div class="flex-1">
-<p class="text-sm font-bold text-on-surface-variant">Final Project: Tactile Dashboard</p>
-<p class="text-[10px] text-outline font-medium">90 mins</p>
-</div>
-</div>
-</div>
+<div id="sidebarLessons" class="flex-1 overflow-y-auto p-4 space-y-2">
+    <div class="p-4 text-center text-sm text-stone-500">Memuat daftar materi...</div>
 </div>
 <div class="p-6 bg-surface-container-highest/30">
 <button class="w-full py-4 bg-on-surface text-surface rounded-xl font-bold tracking-tight hover:scale-[1.02] transition-transform active:scale-95 shadow-lg">
@@ -289,4 +208,89 @@
 </div>
 </body>
 <script type="module" src="js/auth-state.js"></script>
+<script type="module">
+    import { supabase } from './js/supabase.js';
+
+    function getYouTubeEmbed(url) {
+        let videoId = '';
+        const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/);
+        if (match && match[1]) {
+            videoId = match[1];
+        }
+        return videoId ? `https://www.youtube.com/embed/${videoId}?rel=0` : url;
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const params = new URLSearchParams(window.location.search);
+        const courseId = params.get('course');
+        let lessonId = params.get('lesson');
+
+        if (!courseId) {
+            document.getElementById('videoContainer').innerHTML = '<div class="text-white">Akses tidak valid.</div>';
+            return;
+        }
+
+        // Fetch Course
+        const { data: course } = await supabase.from('courses').select('*').eq('id', courseId).single();
+
+        // Fetch all lessons for sidebar
+        const { data: lessons } = await supabase
+            .from('lessons')
+            .select('*')
+            .eq('course_id', courseId)
+            .order('order_index', { ascending: true });
+
+        if (!lessons || lessons.length === 0) {
+            document.getElementById('videoContainer').innerHTML = '<div class="text-white">Belum ada materi.</div>';
+            document.getElementById('lessonTitle').innerText = course ? course.title : 'Kelas Kosong';
+            document.getElementById('lessonDesc').innerText = 'Instruktur belum mengunggah materi apapun.';
+            return;
+        }
+
+        // Determine current lesson
+        let currentLesson = lessons.find(l => l.id == lessonId);
+        if (!currentLesson) {
+            currentLesson = lessons[0]; // Play first lesson if none selected
+            lessonId = currentLesson.id;
+        }
+
+        // Render Video
+        const videoContainer = document.getElementById('videoContainer');
+        if (currentLesson.video_url) {
+            const embedUrl = getYouTubeEmbed(currentLesson.video_url);
+            videoContainer.innerHTML = `<iframe class="w-full h-full" src="${embedUrl}" title="${currentLesson.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+        } else {
+            videoContainer.innerHTML = '<div class="text-white text-center">Video tidak tersedia.</div>';
+        }
+
+        // Render Details
+        document.getElementById('lessonTitle').innerText = currentLesson.title || 'Tanpa Judul';
+        document.getElementById('lessonDesc').innerText = currentLesson.description || course.description || '';
+
+        // Render Sidebar
+        const sidebar = document.getElementById('sidebarLessons');
+        sidebar.innerHTML = lessons.map((l, i) => {
+            const isCurrent = l.id == lessonId;
+            return `
+            <div class="space-y-2">
+                <div class="flex items-center gap-3 px-4 py-2">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-outline">Bagian ${i + 1}</span>
+                    <div class="h-px flex-1 bg-outline-variant/20"></div>
+                </div>
+                <div onclick="window.location.href='lesson.html?course=${courseId}&lesson=${l.id}'" 
+                     class="flex items-center gap-4 px-4 py-4 rounded-lg cursor-pointer transition-all ${isCurrent ? 'bg-surface-container-lowest shadow-sm border border-primary/10' : 'hover:bg-surface-container-highest/40'}">
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${isCurrent ? 'bg-primary-container text-on-primary-container' : 'bg-surface-container-highest text-outline'}">
+                        <span class="material-symbols-outlined text-sm" style="${isCurrent ? "font-variation-settings: 'FILL' 1;" : ""}">${isCurrent ? 'play_circle' : 'play_arrow'}</span>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-sm font-bold ${isCurrent ? 'text-primary' : 'text-on-surface-variant'}">${l.title}</p>
+                        <p class="text-[10px] ${isCurrent ? 'text-primary/70' : 'text-outline'} font-medium">
+                            ${l.duration_minutes || '0'} menit ${isCurrent ? '• SEDANG DITONTON' : ''}
+                        </p>
+                    </div>
+                </div>
+            </div>`;
+        }).join('');
+    });
+</script>
 </html>
