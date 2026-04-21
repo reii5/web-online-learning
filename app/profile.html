@@ -100,7 +100,7 @@
 <button class="p-2 rounded-full hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all active:scale-95">
 <span class="material-symbols-outlined text-stone-500" data-icon="help">help</span>
 </button>
-<button class="p-2 rounded-full hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all active:scale-95">
+<button id="logoutBtn" class="p-2 rounded-full hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all active:scale-95 cursor-pointer">
 <span class="material-symbols-outlined text-stone-500" data-icon="logout">logout</span>
 </button>
 <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high border-2 border-primary-container">
@@ -116,7 +116,7 @@
 <img alt="Budi Santoso Profile" class="w-full h-full object-cover" data-alt="Clear frontal studio portrait of a professional man with clean-cut hair and a warm expression, soft golden backlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTsikBH-B0qW-xtj7RN7kTICoJaA1ZMo7sq91oAKnn1E_MWHn_ulu16cyGdQ-ygUV3_8C0omfbwkEG48HRkrXf7YDl_KoM7wHfORHIUKc_GYjznaO4z-_NYm2zlAtcgvYe4LYEQvPPm9rQpglJMYkvUJ8rf1iWYcdcFw4un0qyBxDQ9vVymLEIE87-yBZXClSh7nm3m48xEdc7rbrSDGZcPyxk0TWne9wjNvdc7vQLA3plE8uEl3zKBZmoYPki44FOqI70bG6qqxA"/>
 </div>
 <div class="relative z-10 text-center md:text-left">
-<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-2">Budi Santoso</h1>
+<h1 id="profileDisplayName" class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-2">Budi Santoso</h1>
 <p class="text-on-surface-variant font-medium opacity-80">Premium Learner • Member since 2023</p>
 <div class="mt-4 flex gap-3 justify-center md:justify-start">
 <span class="bg-primary-container/30 text-on-primary-container px-4 py-1.5 rounded-full text-sm font-bold tracking-wide">64% COURSE PROGRESS</span>
@@ -135,15 +135,15 @@
 <div class="grid md:grid-cols-2 gap-6">
 <div class="space-y-2">
 <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Full Name</label>
-<input class="w-full bg-surface-container-highest border-none rounded-DEFAULT px-5 py-4 text-on-surface focus:ring-2 focus:ring-primary/40 focus:bg-surface-container-low transition-all" type="text" value="Budi Santoso"/>
+<input id="profileNameInput" class="w-full bg-surface-container-highest border-none rounded-DEFAULT px-5 py-4 text-on-surface focus:ring-2 focus:ring-primary/40 focus:bg-surface-container-low transition-all" type="text" value="Budi Santoso"/>
 </div>
 <div class="space-y-2">
 <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Email Address</label>
-<input class="w-full bg-surface-container-highest border-none rounded-DEFAULT px-5 py-4 text-on-surface focus:ring-2 focus:ring-primary/40 focus:bg-surface-container-low transition-all" type="email" value="budi.santoso@example.id"/>
+<input id="profileEmailInput" class="w-full bg-surface-container-highest border-none rounded-DEFAULT px-5 py-4 text-on-surface focus:ring-2 focus:ring-primary/40 focus:bg-surface-container-low transition-all opacity-70" type="email" value="budi.santoso@example.id" readonly/>
 </div>
 </div>
 <div class="mt-8 flex justify-end">
-<button class="bg-primary-container hover:shadow-lg hover:brightness-105 active:scale-95 transition-all text-on-primary-container font-bold px-8 py-3 rounded-full">Save Changes</button>
+<button id="saveProfileBtn" class="bg-primary-container hover:shadow-lg hover:brightness-105 active:scale-95 transition-all text-on-primary-container font-bold px-8 py-3 rounded-full cursor-pointer">Save Changes</button>
 </div>
 </section>
 <!-- Settings Grid -->
@@ -232,4 +232,63 @@
 </div>
 </div>
 
-</body></html>
+</body>
+<script type="module">
+    import { supabase } from './js/supabase.js';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Cek Auth
+        const { data: { user } } = await supabase.auth.getUser();
+        
+        if (!user) {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        // Ambil Profil dari Database
+        const { data: profile, error } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', user.id)
+            .single();
+
+        if (profile) {
+            document.getElementById('profileDisplayName').innerText = profile.full_name || 'Student';
+            document.getElementById('profileNameInput').value = profile.full_name || '';
+            document.getElementById('profileEmailInput').value = user.email || '';
+            
+            if (profile.avatar_url) {
+                document.querySelectorAll('img[alt="User avatar"], img[alt="Budi Santoso Profile"]').forEach(img => {
+                    img.src = profile.avatar_url;
+                });
+            }
+        }
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            window.location.href = 'index.html';
+        });
+
+        // Save Changes
+        const saveBtn = document.getElementById('saveProfileBtn');
+        saveBtn.addEventListener('click', async () => {
+            const newName = document.getElementById('profileNameInput').value;
+            saveBtn.innerText = 'Saving...';
+            
+            const { error } = await supabase
+                .from('profiles')
+                .update({ full_name: newName })
+                .eq('id', user.id);
+                
+            if (!error) {
+                document.getElementById('profileDisplayName').innerText = newName;
+                alert('Profil berhasil diperbarui!');
+            } else {
+                alert('Gagal menyimpan profil: ' + error.message);
+            }
+            saveBtn.innerText = 'Save Changes';
+        });
+    });
+</script>
+</html>
