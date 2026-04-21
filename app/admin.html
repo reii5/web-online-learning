@@ -432,7 +432,7 @@
                         <span class="font-bold text-stone-900 text-sm block">Rp ${parseInt(c.price).toLocaleString('id-ID')}</span>
                         <span class="text-[10px] text-stone-400">Aktif</span>
                     </div>
-                    <button onclick="deleteCourse('${c.id}')" title="Hapus Kelas" class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-500 hover:text-white">
+                    <button type="button" onclick="window.deleteCourse(event, '${c.id}')" title="Hapus Kelas" class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-500 hover:text-white">
                         <span class="material-symbols-outlined text-[20px]">delete</span>
                     </button>
                 </div>
@@ -448,7 +448,9 @@
         }
 
         // Global Delete Course Function
-        window.deleteCourse = async function(courseId) {
+        window.deleteCourse = async function(event, courseId) {
+            event.preventDefault();
+            event.stopPropagation();
             if(!confirm('Apakah Anda yakin ingin menghapus kelas ini? Semua materi di dalamnya mungkin akan ikut terhapus.')) return;
             
             // Delete from Supabase
