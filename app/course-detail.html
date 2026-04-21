@@ -480,14 +480,14 @@
             if(miniInstImg) miniInstImg.src = course.profiles?.avatar_url || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
 
             // Update Image
-            const heroImg = document.querySelector('.lg\\\\:col-span-5 img');
+            const heroImg = document.querySelector('.lg\\:col-span-5 img');
             if (heroImg && course.thumbnail_url) {
                 heroImg.src = course.thumbnail_url;
             }
 
             // Update Price in enroll box
             const priceEl = document.querySelector('h3.text-4xl.font-extrabold.text-on-surface');
-            if(priceEl) priceEl.innerText = course.price > 0 ? \`Rp \${parseInt(course.price).toLocaleString('id-ID')}\` : 'Gratis';
+            if(priceEl) priceEl.innerText = course.price > 0 ? `Rp ${parseInt(course.price).toLocaleString('id-ID')}` : 'Gratis';
 
             // Fetch Lessons
             const { data: lessons } = await supabase
@@ -499,20 +499,20 @@
             const lessonsContainer = document.querySelector('.space-y-4:has(.bg-surface-container-low)');
             if (lessonsContainer) {
                 if (lessons && lessons.length > 0) {
-                    lessonsContainer.innerHTML = lessons.map((l, i) => \`
-                    <div class="bg-surface-container-low p-6 rounded-2xl flex items-center gap-4 hover:shadow-lg transition-shadow cursor-pointer" onclick="window.location.href='lesson.html?course=\${courseId}&lesson=\${l.id}'">
+                    lessonsContainer.innerHTML = lessons.map((l, i) => `
+                    <div class="bg-surface-container-low p-6 rounded-2xl flex items-center gap-4 hover:shadow-lg transition-shadow cursor-pointer" onclick="window.location.href='lesson.html?course=${courseId}&lesson=${l.id}'">
                         <div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center font-bold">
-                            \${i + 1}
+                            ${i + 1}
                         </div>
                         <div class="flex-1">
-                            <h4 class="font-bold text-lg mb-1">\${l.title}</h4>
-                            <p class="text-sm text-on-surface-variant">\${l.duration_minutes || 0} menit • Video</p>
+                            <h4 class="font-bold text-lg mb-1">${l.title}</h4>
+                            <p class="text-sm text-on-surface-variant">${l.duration_minutes || 0} menit • Video</p>
                         </div>
                         <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
-                            <span class="material-symbols-outlined text-primary">\${l.is_locked ? 'lock' : 'play_arrow'}</span>
+                            <span class="material-symbols-outlined text-primary">${l.is_locked ? 'lock' : 'play_arrow'}</span>
                         </div>
                     </div>
-                    \`).join('');
+                    `).join('');
                 } else {
                     lessonsContainer.innerHTML = '<p class="text-stone-500">Belum ada materi untuk kelas ini.</p>';
                 }
