@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Admin Dashboard - Sunbeam Learning</title>
+    <title>Instructor Workspace - Sunbeam Learning</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
@@ -27,210 +27,304 @@
                         "outline": "#7f7663"
                     },
                     "fontFamily": {
-                        "headline": ["Plus Jakarta Sans"],
-                        "body": ["Plus Jakarta Sans"]
+                        "sans": ["Plus Jakarta Sans", "sans-serif"]
                     }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fbf9f1; }
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .glass-panel { background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.5); }
+        .glass-panel { background: rgba(251, 249, 241, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #e4e3db; border-radius: 20px; }
+        .input-field {
+            @apply w-full bg-white border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 transition-all focus:outline-none focus:ring-4 focus:ring-primary-container/30 focus:border-primary-container;
+        }
+        .form-label {
+            @apply block text-[10px] uppercase tracking-widest font-extrabold text-stone-500 mb-2 ml-1;
+        }
     </style>
     <link rel="stylesheet" href="styles/main.css">
 </head>
-<body class="bg-surface text-on-surface min-h-screen relative">
+<body class="text-on-surface min-h-screen relative overflow-hidden flex">
     
     <!-- Restrict Access Overlay -->
-    <div id="accessDeniedOverlay" class="fixed inset-0 z-50 bg-surface flex flex-col items-center justify-center hidden">
-        <span class="material-symbols-outlined text-6xl text-primary mb-4">gpp_maybe</span>
-        <h1 class="text-3xl font-bold mb-2">Akses Ditolak</h1>
-        <p class="text-on-surface-variant mb-6">Anda tidak memiliki izin (role instructor/admin) untuk mengakses halaman ini.</p>
-        <a href="index.html" class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold">Kembali ke Beranda</a>
+    <div id="accessDeniedOverlay" class="fixed inset-0 z-[100] bg-surface flex flex-col items-center justify-center hidden backdrop-blur-md">
+        <div class="bg-white p-10 rounded-3xl shadow-2xl border border-stone-100 text-center max-w-md mx-4">
+            <div class="w-20 h-20 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span class="material-symbols-outlined text-4xl">lock</span>
+            </div>
+            <h1 class="text-2xl font-bold mb-3">Akses Ditolak</h1>
+            <p class="text-on-surface-variant mb-8 text-sm leading-relaxed">Workspace ini eksklusif untuk Instruktur dan Administrator. Silakan kembali ke beranda.</p>
+            <a href="index.html" class="bg-stone-900 text-white w-full block py-3 rounded-xl font-bold hover:bg-stone-800 transition-colors">Kembali ke Beranda</a>
+        </div>
     </div>
 
-    <div class="flex h-screen overflow-hidden">
-        <!-- Sidebar -->
-        <aside class="w-64 bg-surface-container-low shadow-xl flex flex-col h-full z-20">
-            <div class="p-6">
-                <a href="index.html" class="text-2xl font-extrabold text-stone-900 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-primary">local_library</span>
-                    Sunbeam
+    <!-- Sidebar Enterprise Style -->
+    <aside class="w-72 bg-white border-r border-stone-100 flex flex-col h-screen z-20 shrink-0 hidden md:flex">
+        <div class="h-20 px-8 flex items-center border-b border-stone-100 shrink-0">
+            <a href="index.html" class="text-xl font-extrabold text-stone-900 flex items-center gap-2 tracking-tight">
+                <div class="w-8 h-8 bg-primary-container rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-on-primary-container text-lg">school</span>
+                </div>
+                Sunbeam<span class="text-stone-400 font-normal">Workspace</span>
+            </a>
+        </div>
+        
+        <div class="p-6">
+            <p class="text-[10px] uppercase tracking-widest font-extrabold text-stone-400 mb-4 px-2">Menu Utama</p>
+            <nav class="space-y-1">
+                <a href="#" class="flex items-center gap-3 bg-stone-900 text-white px-4 py-3 rounded-xl font-medium transition-all shadow-md shadow-stone-900/10">
+                    <span class="material-symbols-outlined text-xl">dashboard</span> Dashboard
                 </a>
-            </div>
-            <nav class="flex-1 px-4 space-y-2 mt-4">
-                <a href="#" class="flex items-center gap-3 bg-primary-container text-on-primary-container px-4 py-3 rounded-xl font-bold transition-all">
-                    <span class="material-symbols-outlined">dashboard</span> Dashboard
+                <a href="#" class="flex items-center gap-3 text-stone-500 hover:text-stone-900 hover:bg-stone-50 px-4 py-3 rounded-xl font-medium transition-all group">
+                    <span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">video_library</span> Studio Kelas
                 </a>
-                <a href="#" class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-highest px-4 py-3 rounded-xl font-medium transition-all">
-                    <span class="material-symbols-outlined">video_library</span> Materi Video
-                </a>
-                <a href="#" class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-highest px-4 py-3 rounded-xl font-medium transition-all">
-                    <span class="material-symbols-outlined">group</span> Siswa
+                <a href="#" class="flex items-center gap-3 text-stone-500 hover:text-stone-900 hover:bg-stone-50 px-4 py-3 rounded-xl font-medium transition-all group">
+                    <span class="material-symbols-outlined text-xl group-hover:scale-110 transition-transform">insights</span> Analitik
                 </a>
             </nav>
-            <div class="p-4">
-                <button id="logoutBtn" class="w-full flex items-center gap-3 text-red-600 hover:bg-red-50 px-4 py-3 rounded-xl font-bold transition-all">
-                    <span class="material-symbols-outlined">logout</span> Keluar
-                </button>
+        </div>
+
+        <div class="mt-auto p-6 border-t border-stone-100">
+            <button id="logoutBtn" class="w-full flex items-center justify-center gap-2 text-stone-500 hover:text-red-600 hover:bg-red-50 px-4 py-3 rounded-xl font-bold transition-all border border-stone-200 hover:border-red-100">
+                <span class="material-symbols-outlined text-xl">logout</span> Keluar
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 h-screen overflow-y-auto custom-scrollbar relative flex flex-col">
+        <!-- Topbar -->
+        <header class="h-20 px-6 md:px-10 flex items-center justify-between glass-panel sticky top-0 z-10 shrink-0">
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="md:hidden w-8 h-8 bg-primary-container rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-on-primary-container text-lg">school</span>
+                </a>
+                <div>
+                    <h2 class="text-[10px] md:text-sm font-bold text-stone-500 uppercase tracking-widest">Overview</h2>
+                    <h1 class="text-lg md:text-xl font-bold text-stone-900">Selamat datang kembali!</h1>
+                </div>
             </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="flex-1 h-full overflow-y-auto bg-surface relative">
-            <!-- Header -->
-            <header class="h-20 px-8 flex items-center justify-between glass-panel sticky top-0 z-10">
-                <h2 class="text-xl font-bold text-on-surface">Instructor Dashboard</h2>
-                <div class="flex items-center gap-4">
-                    <div id="adminProfileInfo" class="flex items-center gap-3">
-                        <span class="font-bold text-sm" id="adminName">Loading...</span>
-                        <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
-                            <img id="adminAvatar" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="w-full h-full object-cover">
-                        </div>
+            <div class="flex items-center gap-5">
+                <button class="w-10 h-10 rounded-full border border-stone-200 flex items-center justify-center text-stone-500 hover:bg-stone-50 hover:text-stone-900 transition-colors relative">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+                <div class="h-8 w-px bg-stone-200 hidden md:block"></div>
+                <div id="adminProfileInfo" class="flex items-center gap-3 cursor-pointer group">
+                    <div class="text-right hidden md:block">
+                        <p class="font-bold text-sm text-stone-900 group-hover:text-primary transition-colors" id="adminName">Loading...</p>
+                        <p class="text-xs text-stone-500 font-medium">Instruktur</p>
+                    </div>
+                    <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-transparent group-hover:border-primary-container transition-all">
+                        <img id="adminAvatar" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="w-full h-full object-cover">
                     </div>
                 </div>
-            </header>
+            </div>
+        </header>
 
-            <div class="p-8 max-w-5xl mx-auto space-y-8">
+        <!-- Dashboard Content -->
+        <div class="p-6 md:p-10 max-w-7xl mx-auto w-full flex-1 space-y-10">
+            
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Stat 1 -->
+                <div class="bg-white p-6 rounded-3xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] border border-stone-100 flex flex-col gap-4 relative overflow-hidden group hover:border-primary-container/50 transition-colors">
+                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-primary-container/10 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="flex items-center gap-3 relative z-10">
+                        <div class="w-10 h-10 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-lg">school</span>
+                        </div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-stone-500">Total Kelas</p>
+                    </div>
+                    <div class="relative z-10 flex items-end justify-between">
+                        <p class="text-4xl font-extrabold text-stone-900 tracking-tight" id="totalCoursesCount">0</p>
+                        <span class="text-[10px] md:text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-md">+2 Bulan ini</span>
+                    </div>
+                </div>
+                <!-- Stat 2 -->
+                <div class="bg-white p-6 rounded-3xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] border border-stone-100 flex flex-col gap-4 relative overflow-hidden group hover:border-secondary-container/50 transition-colors">
+                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-secondary-container/10 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="flex items-center gap-3 relative z-10">
+                        <div class="w-10 h-10 rounded-xl bg-secondary-container/20 flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined text-lg">group</span>
+                        </div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-stone-500">Total Siswa</p>
+                    </div>
+                    <div class="relative z-10 flex items-end justify-between">
+                        <p class="text-4xl font-extrabold text-stone-900 tracking-tight">0</p>
+                        <span class="text-xs font-bold text-stone-400">Belum ada data</span>
+                    </div>
+                </div>
+                <!-- Stat 3 -->
+                <div class="bg-stone-900 p-6 rounded-3xl shadow-xl flex flex-col gap-4 relative overflow-hidden text-white">
+                    <div class="absolute inset-0 bg-gradient-to-br from-stone-800 to-stone-900"></div>
+                    <div class="flex items-center gap-3 relative z-10">
+                        <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-lg text-primary-container">account_balance_wallet</span>
+                        </div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-stone-300">Pendapatan</p>
+                    </div>
+                    <div class="relative z-10 flex items-end justify-between">
+                        <p class="text-4xl font-extrabold text-white tracking-tight">Rp 0</p>
+                        <button class="text-xs font-bold text-primary-container hover:underline">Tarik Dana</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forms Section Layout -->
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
                 
-                <!-- Stats Row -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-primary-container/30 flex items-center justify-center text-primary">
-                            <span class="material-symbols-outlined">school</span>
-                        </div>
+                <!-- KIRI: Add Course -->
+                <div class="bg-white rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-stone-100 p-6 md:p-8 flex flex-col">
+                    <div class="mb-8 border-b border-stone-100 pb-6 flex items-center justify-between">
                         <div>
-                            <p class="text-sm text-on-surface-variant font-medium">Total Kelas</p>
-                            <p class="text-2xl font-bold" id="totalCoursesCount">0</p>
+                            <h3 class="text-2xl font-bold text-stone-900">Buat Kelas Baru</h3>
+                            <p class="text-stone-500 text-sm mt-1">Desain kurikulum hebat Anda berikutnya.</p>
                         </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary">
-                            <span class="material-symbols-outlined">group</span>
+                        <div class="hidden md:flex w-12 h-12 bg-primary-container/20 rounded-full items-center justify-center text-primary">
+                            <span class="material-symbols-outlined">add</span>
                         </div>
-                        <div>
-                            <p class="text-sm text-on-surface-variant font-medium">Total Siswa</p>
-                            <p class="text-2xl font-bold">0</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Add Course Section -->
-                <div class="bg-white rounded-3xl shadow-lg p-8 border border-stone-100">
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="material-symbols-outlined text-primary text-3xl">add_circle</span>
-                        <h3 class="text-2xl font-bold">Unggah Kelas Baru</h3>
                     </div>
                     
-                    <form id="addCourseForm" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Judul Kelas</label>
-                                <input id="cTitle" required class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-primary/40" placeholder="Misal: UI/UX Design Masterclass">
+                    <form id="addCourseForm" class="space-y-6 flex-1 flex flex-col">
+                        <div class="space-y-6 flex-1">
+                            <div>
+                                <label class="form-label">Judul Kelas</label>
+                                <input id="cTitle" required class="input-field" placeholder="Misal: UI/UX Design Masterclass">
                             </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Kategori</label>
-                                <select id="cCategory" class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-primary/40">
-                                    <option value="Design">Design</option>
-                                    <option value="Development">Development</option>
-                                    <option value="Marketing">Marketing</option>
-                                    <option value="Self-Growth">Self-Growth</option>
-                                </select>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="form-label">Kategori</label>
+                                    <select id="cCategory" class="input-field appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131313%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[length:10px_10px] bg-[right_1rem_center] pr-10">
+                                        <option value="Design">Design</option>
+                                        <option value="Development">Development</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Self-Growth">Self-Growth</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="form-label">Level</label>
+                                    <select id="cLevel" class="input-field appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131313%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[length:10px_10px] bg-[right_1rem_center] pr-10">
+                                        <option value="Beginner">Beginner</option>
+                                        <option value="Intermediate">Intermediate</option>
+                                        <option value="Advanced">Advanced</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="form-label">Deskripsi Kelas</label>
+                                <textarea id="cDesc" required rows="3" class="input-field resize-none" placeholder="Jelaskan apa yang akan dipelajari siswa secara menarik..."></textarea>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="form-label">Harga (Rp)</label>
+                                    <div class="relative">
+                                        <span class="absolute left-4 top-3 text-stone-400 font-bold">Rp</span>
+                                        <input id="cPrice" type="number" value="0" min="0" class="input-field pl-12">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="form-label">URL Cover (Gambar)</label>
+                                    <input id="cThumbnail" required class="input-field" placeholder="https://...">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Deskripsi Kelas</label>
-                            <textarea id="cDesc" required rows="3" class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-primary/40" placeholder="Jelaskan apa yang akan dipelajari..."></textarea>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Harga (Rp)</label>
-                                <input id="cPrice" type="number" value="0" min="0" class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-primary/40">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Level</label>
-                                <select id="cLevel" class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-primary/40">
-                                    <option value="Beginner">Beginner</option>
-                                    <option value="Intermediate">Intermediate</option>
-                                    <option value="Advanced">Advanced</option>
-                                </select>
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">URL Thumbnail (Gambar)</label>
-                                <input id="cThumbnail" required class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-primary/40" placeholder="https://...">
-                            </div>
-                        </div>
-
-                        <div class="pt-4">
-                            <button type="submit" class="bg-primary text-on-primary font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform shadow-lg">
-                                Simpan Kelas Ke Database
+                        <div class="pt-6 mt-auto">
+                            <button type="submit" class="w-full bg-stone-900 text-white font-bold px-8 py-4 rounded-xl hover:bg-stone-800 transition-colors shadow-lg shadow-stone-900/20 flex justify-center items-center gap-2 group">
+                                <span class="material-symbols-outlined text-xl group-hover:-translate-y-1 transition-transform">publish</span> Terbitkan Kelas
                             </button>
                         </div>
                     </form>
                 </div>
 
-                </div>
-
-                <!-- Add Lesson Section -->
-                <div class="bg-white rounded-3xl shadow-lg p-8 border border-stone-100">
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="material-symbols-outlined text-secondary text-3xl">video_library</span>
-                        <h3 class="text-2xl font-bold">Unggah Materi Video</h3>
-                    </div>
+                <!-- KANAN: Add Lesson & List -->
+                <div class="space-y-10 flex flex-col h-full">
                     
-                    <form id="addLessonForm" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Pilih Kelas</label>
-                                <select id="lCourse" required class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-secondary/40">
+                    <!-- Add Lesson -->
+                    <div class="bg-white rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-stone-100 p-6 md:p-8">
+                        <div class="mb-6 flex items-center justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-stone-900">Tambah Materi Video</h3>
+                            </div>
+                            <div class="w-10 h-10 bg-secondary-container/20 rounded-full flex items-center justify-center text-secondary">
+                                <span class="material-symbols-outlined text-sm">video_file</span>
+                            </div>
+                        </div>
+                        
+                        <form id="addLessonForm" class="space-y-5">
+                            <div>
+                                <label class="form-label">Hubungkan ke Kelas</label>
+                                <select id="lCourse" required class="input-field appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131313%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[length:10px_10px] bg-[right_1rem_center] pr-10 border-secondary/20 focus:ring-secondary/20 focus:border-secondary">
                                     <option value="">Memuat kelas...</option>
                                 </select>
                             </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Judul Materi</label>
-                                <input id="lTitle" required class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-secondary/40" placeholder="Misal: 01. Pengenalan Dasar">
+
+                            <div class="grid grid-cols-4 gap-4">
+                                <div class="col-span-3">
+                                    <label class="form-label">Judul Materi</label>
+                                    <input id="lTitle" required class="input-field border-secondary/20 focus:ring-secondary/20 focus:border-secondary" placeholder="Bab 1: Pengenalan">
+                                </div>
+                                <div class="col-span-1">
+                                    <label class="form-label">Urutan</label>
+                                    <input id="lOrder" type="number" required value="1" min="1" class="input-field border-secondary/20 focus:ring-secondary/20 focus:border-secondary text-center px-1">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">URL Video (YouTube / MP4 Link)</label>
-                            <input id="lVideoUrl" required class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-secondary/40" placeholder="https://youtube.com/...">
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Durasi (Menit)</label>
-                                <input id="lDuration" type="number" required value="10" min="1" class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-secondary/40">
+                            <div class="grid grid-cols-4 gap-4">
+                                <div class="col-span-3">
+                                    <label class="form-label">URL Video (Youtube/MP4)</label>
+                                    <input id="lVideoUrl" required class="input-field border-secondary/20 focus:ring-secondary/20 focus:border-secondary" placeholder="https://...">
+                                </div>
+                                <div class="col-span-1">
+                                    <label class="form-label">Mnt</label>
+                                    <input id="lDuration" type="number" required value="10" min="1" class="input-field border-secondary/20 focus:ring-secondary/20 focus:border-secondary text-center px-1">
+                                </div>
                             </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Urutan Materi (Ke-)</label>
-                                <input id="lOrder" type="number" required value="1" min="1" class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-secondary/40">
+
+                            <div class="pt-2">
+                                <button type="submit" class="w-full bg-secondary text-white font-bold px-8 py-3.5 rounded-xl hover:bg-[#2a5153] transition-colors flex justify-center items-center gap-2 group">
+                                    <span class="material-symbols-outlined text-lg group-hover:-translate-y-1 transition-transform">upload</span> Unggah Materi
+                                </button>
                             </div>
-                        </div>
-
-                        <div class="pt-4">
-                            <button type="submit" class="bg-secondary text-on-secondary font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform shadow-lg">
-                                Simpan Materi
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Existing Courses List -->
-                <div class="bg-white rounded-3xl shadow-lg p-8 border border-stone-100">
-                    <h3 class="text-2xl font-bold mb-6">Kelas Anda</h3>
-                    <div id="coursesList" class="space-y-4">
-                        <p class="text-stone-500 text-sm">Memuat kelas...</p>
+                        </form>
                     </div>
-                </div>
 
+                    <!-- Manage Courses List -->
+                    <div class="bg-white rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-stone-100 p-6 md:p-8 flex-1 flex flex-col min-h-[300px]">
+                        <div class="mb-6 flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-stone-900">Arsip Kelas</h3>
+                            <button class="text-primary text-sm font-bold hover:underline">Lihat Semua</button>
+                        </div>
+                        <div class="flex-1 overflow-y-auto custom-scrollbar pr-2 space-y-3" id="coursesList">
+                            <!-- Loading Skeleton -->
+                            <div class="animate-pulse flex space-x-4">
+                                <div class="rounded-xl bg-stone-200 h-16 w-16"></div>
+                                <div class="flex-1 space-y-3 py-1">
+                                    <div class="h-2 bg-stone-200 rounded w-3/4"></div>
+                                    <div class="h-2 bg-stone-200 rounded w-1/2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </main>
-    </div>
+
+            <!-- Footer -->
+            <footer class="pt-10 pb-6 text-center text-stone-400 text-sm font-medium">
+                © 2024 Sunbeam Learning. Instructor Workspace Platform.
+            </footer>
+        </div>
+    </main>
 
 </body>
 <script type="module">
@@ -266,6 +360,18 @@
             window.location.href = 'index.html';
         });
 
+        // Form UX handlers
+        const animateButton = (btn, originalText, loadingText) => {
+            btn.innerHTML = `<span class="material-symbols-outlined text-lg animate-spin">sync</span> ${loadingText}`;
+            btn.disabled = true;
+            btn.classList.add('opacity-80');
+            return () => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.classList.remove('opacity-80');
+            };
+        };
+
         // 3. Load Instructor's Courses
         async function loadCourses() {
             const { data: courses, error } = await supabase
@@ -275,21 +381,45 @@
                 .order('created_at', { ascending: false });
 
             const listEl = document.getElementById('coursesList');
-            document.getElementById('totalCoursesCount').innerText = courses ? courses.length : 0;
+            
+            // Animate Counter
+            const countEl = document.getElementById('totalCoursesCount');
+            let currentCount = 0;
+            const targetCount = courses ? courses.length : 0;
+            const timer = setInterval(() => {
+                if(currentCount < targetCount) {
+                    currentCount++;
+                    countEl.innerText = currentCount;
+                } else {
+                    clearInterval(timer);
+                    countEl.innerText = targetCount;
+                }
+            }, 50);
 
             if (error || !courses || courses.length === 0) {
-                listEl.innerHTML = '<p class="text-stone-500 text-sm">Belum ada kelas yang diunggah.</p>';
+                listEl.innerHTML = `
+                <div class="h-full flex flex-col items-center justify-center text-center p-6 border-2 border-dashed border-stone-200 rounded-2xl">
+                    <span class="material-symbols-outlined text-stone-300 text-4xl mb-2">inventory_2</span>
+                    <p class="text-stone-500 font-medium text-sm">Belum ada kelas.</p>
+                    <p class="text-stone-400 text-xs">Mulai buat kelas pertama Anda.</p>
+                </div>`;
                 return;
             }
 
             listEl.innerHTML = courses.map(c => `
-                <div class="flex items-center gap-4 p-4 border border-stone-100 rounded-xl hover:bg-stone-50 transition-colors">
-                    <img src="${c.thumbnail_url || 'https://via.placeholder.com/150'}" class="w-16 h-16 rounded-lg object-cover">
-                    <div class="flex-1">
-                        <h4 class="font-bold text-lg">${c.title}</h4>
-                        <p class="text-sm text-stone-500">${c.category} • ${c.level}</p>
+                <div class="flex items-center gap-4 p-3 border border-stone-100 rounded-2xl hover:border-primary-container hover:shadow-md transition-all group bg-white cursor-pointer">
+                    <img src="${c.thumbnail_url || 'https://via.placeholder.com/150'}" class="w-14 h-14 rounded-xl object-cover border border-stone-100">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-stone-900 truncate group-hover:text-primary transition-colors">${c.title}</h4>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary-container/20 px-2 py-0.5 rounded-md">${c.category}</span>
+                            <span class="text-xs text-stone-500 truncate">${c.level}</span>
+                        </div>
                     </div>
-                    <span class="font-bold text-primary">Rp ${parseInt(c.price).toLocaleString('id-ID')}</span>
+                    <div class="text-right pl-2 border-l border-stone-100">
+                        <span class="font-bold text-stone-900 text-sm block">Rp ${parseInt(c.price).toLocaleString('id-ID')}</span>
+                        <span class="text-[10px] text-stone-400">Aktif</span>
+                    </div>
                 </div>
             `).join('');
 
@@ -308,8 +438,8 @@
         document.getElementById('addCourseForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = e.target.querySelector('button[type="submit"]');
-            btn.innerText = 'Mengunggah...';
-            btn.disabled = true;
+            const originalHTML = btn.innerHTML;
+            const resetBtn = animateButton(btn, originalHTML, 'Menerbitkan...');
 
             const courseData = {
                 title: document.getElementById('cTitle').value,
@@ -326,27 +456,24 @@
             if (error) {
                 alert('Gagal menambah kelas: ' + error.message);
             } else {
-                alert('Kelas berhasil ditambahkan!');
                 e.target.reset();
                 await loadCourses();
             }
 
-            btn.innerText = 'Simpan Kelas Ke Database';
-            btn.disabled = false;
+            resetBtn();
         });
 
         // 5. Handle Add Lesson Submission
         document.getElementById('addLessonForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = e.target.querySelector('button[type="submit"]');
-            btn.innerText = 'Menyimpan...';
-            btn.disabled = true;
+            const originalHTML = btn.innerHTML;
+            const resetBtn = animateButton(btn, originalHTML, 'Mengunggah...');
 
             const courseId = document.getElementById('lCourse').value;
             if(!courseId) {
                 alert('Pilih kelas terlebih dahulu!');
-                btn.innerText = 'Simpan Materi';
-                btn.disabled = false;
+                resetBtn();
                 return;
             }
 
@@ -356,7 +483,7 @@
                 video_url: document.getElementById('lVideoUrl').value,
                 duration_minutes: parseInt(document.getElementById('lDuration').value) || 0,
                 order_index: parseInt(document.getElementById('lOrder').value) || 1,
-                is_locked: false // Default buka kunci
+                is_locked: false
             };
 
             const { error } = await supabase.from('lessons').insert([lessonData]);
@@ -364,12 +491,10 @@
             if (error) {
                 alert('Gagal menambah materi: ' + error.message);
             } else {
-                alert('Materi berhasil ditambahkan ke kelas!');
                 e.target.reset();
             }
 
-            btn.innerText = 'Simpan Materi';
-            btn.disabled = false;
+            resetBtn();
         });
     });
 </script>
