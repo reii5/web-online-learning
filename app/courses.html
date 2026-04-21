@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jelajahi Skill Baru - Sunbeam Learning</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#584400",
+                    "outline-variant": "#d0c5af",
+                    "tertiary-fixed-dim": "#75d2f8",
+                    "surface": "#fbf9f1",
+                    "tertiary-fixed": "#bce9ff",
+                    "on-secondary-fixed": "#002021",
+                    "surface-container": "#f0eee6",
+                    "surface-container-high": "#eae8e0",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#f2c94c",
+                    "primary-fixed-dim": "#ebc246",
+                    "on-tertiary-fixed-variant": "#004d63",
+                    "secondary-fixed-dim": "#9ecfd1",
+                    "surface-tint": "#745b00",
+                    "background": "#fbf9f1",
+                    "on-primary-container": "#6b5400",
+                    "secondary": "#356668",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#005f79",
+                    "tertiary": "#006783",
+                    "secondary-container": "#b9ecee",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e4e3db",
+                    "surface-bright": "#fbf9f1",
+                    "primary": "#745b00",
+                    "surface-container-low": "#f5f4ec",
+                    "inverse-surface": "#30312c",
+                    "inverse-on-surface": "#f3f1e9",
+                    "secondary-fixed": "#b9ecee",
+                    "on-primary-fixed": "#241a00",
+                    "inverse-primary": "#ebc246",
+                    "surface-dim": "#dcdad2",
+                    "surface-variant": "#e4e3db",
+                    "on-secondary-container": "#3c6c6e",
+                    "on-surface": "#1b1c17",
+                    "on-surface-variant": "#4d4635",
+                    "on-tertiary-fixed": "#001f29",
+                    "tertiary-container": "#7cd9ff",
+                    "primary-fixed": "#ffe08b",
+                    "outline": "#7f7663",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1b1c17",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#1a4e50"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fbf9f1; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="bg-[#fbf9f1]/80 dark:bg-stone-950/80 backdrop-blur-xl docked full-width top-0 z-50 shadow-[0_20px_50px_rgba(27,28,23,0.05)] sticky">
+<div class="flex justify-between items-center px-8 h-20 w-full max-w-screen-2xl mx-auto">
+<a href="index.html" class="text-xl font-extrabold text-stone-900 dark:text-stone-50 tracking-tighter hover:text-primary transition-colors cursor-pointer">Sunbeam Learning</a>
+
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-stone-600 font-medium hover:text-[#745b00] transition-colors" href="index.html">Beranda</a>
+<a class="text-[#745b00] font-bold border-b-2 border-[#f2c94c] transition-colors" href="courses.html">Kelas</a>
+<a class="text-stone-600 font-medium hover:text-[#745b00] transition-colors" href="instructor.html">Instruktur</a>
+<a class="text-stone-600 font-medium hover:text-[#745b00] transition-colors" href="chat.html">Mentor Chat</a>
+</nav>
+
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container-highest px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant text-xl">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-medium ml-2 w-48" placeholder="Cari materi..." type="text"/>
+</div>
+<button class="text-stone-600"><span class="material-symbols-outlined">notifications</span></button>
+<button onclick="window.location.href='login.html'" class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-bold text-sm hover:scale-95 duration-200 transition-all shadow-lg shadow-primary/10 cursor-pointer">Masuk</button>
+</div>
+</div>
+</header>
+<main class="max-w-screen-2xl mx-auto flex min-h-screen">
+<!-- SideNavBar / Category Filter -->
+<aside class="hidden md:flex flex-col gap-2 py-8 bg-[#f5f4ec] dark:bg-stone-900 h-screen w-72 rounded-r-[3rem] sticky top-20 shadow-xl shadow-stone-900/5 z-40">
+<div class="px-8 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<img alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm" data-alt="professional portrait of a young male student with a friendly expression and creative style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIzPner4oaRhIEC_9AG2WvUyguA1xPGZ6G7oXTJXTjG2sdaMIVYtE27xyhSEh300ZhxXHMl2Fsyb0m5urBM9vHqbk4soEOA92_g8gCgKHyn3yZU78a3Atqbt-ZDpwnsgxcrULziZIeNRtyFjtzd40jdcmVzzUhAx1MQI2lVZt9R4G4eWJDAEzhvIgQR7CPVjorLmYgIraatnWD6VcqR2O8KkVAQLiibnCDngtc6-skevX1LWwqaubkKKtyyOCZLmWTr8QqAhDW1G0"/>
+<div>
+<p class="text-xs text-on-surface-variant font-medium">Welcome back</p>
+<p class="text-sm font-bold text-stone-900">Budi Santoso</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<div class="px-8 mb-2">
+<h3 class="text-[10px] uppercase tracking-[0.2em] font-extrabold text-outline mb-4">Categories</h3>
+</div>
+<a class="bg-[#ffffff] dark:bg-stone-800 text-[#745b00] dark:text-[#f2c94c] rounded-full mx-4 px-6 py-3 font-bold flex items-center gap-3 transition-all translate-x-1" href="javascript:void(0)">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-sm">Semua Kursus</span>
+</a>
+<a class="text-stone-500 dark:text-stone-400 mx-4 px-6 py-3 flex items-center gap-3 hover:bg-white/50 transition-all rounded-full" href="javascript:void(0)">
+<span class="material-symbols-outlined">palette</span>
+<span class="text-sm">Design</span>
+</a>
+<a class="text-stone-500 dark:text-stone-400 mx-4 px-6 py-3 flex items-center gap-3 hover:bg-white/50 transition-all rounded-full" href="javascript:void(0)">
+<span class="material-symbols-outlined">code</span>
+<span class="text-sm">Development</span>
+</a>
+<a class="text-stone-500 dark:text-stone-400 mx-4 px-6 py-3 flex items-center gap-3 hover:bg-white/50 transition-all rounded-full" href="javascript:void(0)">
+<span class="material-symbols-outlined">campaign</span>
+<span class="text-sm">Marketing</span>
+</a>
+<a class="text-stone-500 dark:text-stone-400 mx-4 px-6 py-3 flex items-center gap-3 hover:bg-white/50 transition-all rounded-full" href="javascript:void(0)">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-sm">Self-Growth</span>
+</a>
+</nav>
+<div class="mt-auto px-6 pb-24">
+<div class="bg-secondary-container p-6 rounded-xl relative overflow-hidden group">
+<div class="relative z-10">
+<p class="text-on-secondary-container font-bold text-sm mb-1">Upgrade Pro</p>
+<p class="text-on-secondary-container/70 text-xs mb-4">Dapatkan akses ke semua mentor premium.</p>
+<button class="bg-secondary text-on-secondary text-[10px] uppercase font-bold tracking-widest px-4 py-2 rounded-full hover:scale-105 transition-transform">Learn More</button>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-7xl opacity-10 group-hover:rotate-12 transition-transform">auto_awesome</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-1 px-6 md:px-12 py-10">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div>
+<span class="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">Catalog</span>
+<h1 class="text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight">Jelajahi Skill Baru</h1>
+<p class="text-on-surface-variant mt-4 text-lg max-w-xl leading-relaxed">Pilih kurikulum yang dirancang oleh ahli industri untuk mengakselerasi karir masa depanmu.</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container-high px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">filter_list</span> Filter
+                    </button>
+<button class="bg-surface-container-high px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2">
+                        Terbaru <span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Chips Mobile Scroll -->
+<div class="flex md:hidden gap-3 overflow-x-auto pb-6 hide-scrollbar">
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full text-sm font-bold whitespace-nowrap">Semua Kursus</button>
+<button class="bg-surface-container-high text-on-surface-variant px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap">Design</button>
+<button class="bg-surface-container-high text-on-surface-variant px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap">Development</button>
+<button class="bg-surface-container-high text-on-surface-variant px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap">Marketing</button>
+</div>
+<!-- Grid Content -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Course Card 1 -->
+<div onclick="window.location.href='course-detail.html'" class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_40px_80px_-20px_rgba(116,91,0,0.12)] border border-transparent hover:border-primary/10 cursor-pointer">
+<div class="aspect-[16/10] overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="vibrant flat design illustration of graphic design elements like color wheels and typography icons with soft mint background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnTriVZ8UDVtW0kh4vtn1JkVLXEsD82dLE2XRbWrSo0cR98WxIY4s2pvlwRAY0bGkLJVqkJnCe6q0eGesFydzIaOFbXZviI5oxJtep43s7T-vVNgP2dtbTRRokWEa3xfXRxhR0qA1rc8WVGR9rFVjarAa6N2In5m2aqxE-IJ3Kpq2YrAJjYHbJWmH4h6DjMVyYEDrrjsMg9WcPtvjgXutklIJiJ2Ys0nbX597wDidEnYGTYpjm5RHHzgrm2mA49U9oxZP2P8bauKs"/>
+<div class="absolute top-4 left-4 bg-secondary-container/90 backdrop-blur text-on-secondary-container text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Popular</div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-1 text-[#745b00] mb-3">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold tracking-wider">4.9 (2.1k reviews)</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface leading-snug mb-2 group-hover:text-primary transition-colors">Mastering Visual Identity Design</h3>
+<p class="text-on-surface-variant text-sm mb-6">Bersama <span class="font-semibold text-on-surface">Adrian Wijaya</span></p>
+<div class="flex items-center justify-between pt-6 border-t border-surface-container">
+<span class="text-2xl font-black text-on-surface">Rp 449.000</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div onclick="window.location.href='course-detail.html'" class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_40px_80px_-20px_rgba(116,91,0,0.12)] border border-transparent hover:border-primary/10 cursor-pointer">
+<div class="aspect-[16/10] overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="clean workspace with a laptop displaying clean code and a cup of coffee in soft daylight with warm wood textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaG2J8C344S1BPSerjQ1hpXXcZd2krk9_PGUVwKsDkjVp1G1th47SINnGA_kyNlY4QLAH6tnMqw9TsICqD1HKfj6rWsNRBgIac1D7VIH9HH3fxk6um65xwb4sun1jf7mD7uz1C7UM3jx779FGhFhw3uBLnvLzKUfwLR9UVFO3rqFw0vlnw-d9GN2JF0NrWSGhMcVRKFOsy5--LGZHOSZlEdUs_N8vMq1TsAK55j28RoPGtoXY9wtQctv5zWHVjTinbNvc49cOQNXs"/>
+<div class="absolute top-4 left-4 bg-tertiary-container/90 backdrop-blur text-on-tertiary-container text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">New</div>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-1 text-[#745b00] mb-3">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold tracking-wider">4.8 (850 reviews)</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface leading-snug mb-2 group-hover:text-primary transition-colors">Full-Stack Dev with Next.js 14</h3>
+<p class="text-on-surface-variant text-sm mb-6">Bersama <span class="font-semibold text-on-surface">Siska Pratama</span></p>
+<div class="flex items-center justify-between pt-6 border-t border-surface-container">
+<span class="text-2xl font-black text-on-surface">Rp 599.000</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Course Card 3 -->
+<div onclick="window.location.href='course-detail.html'" class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_40px_80px_-20px_rgba(116,91,0,0.12)] border border-transparent hover:border-primary/10 cursor-pointer">
+<div class="aspect-[16/10] overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="abstract marketing concept with floating 3D icons of charts, arrows, and speech bubbles in pastel yellow and mint colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM4stnuXI4ma2sLYhAJ5AvjduqPO53GSG4tLIi_0F0v44LufN1Nlm_oV5TMLi6gRvHkr9CjZ5zwb1qcNvcfxNZQwBdo97Prv4WEju57GbI_qtaFLsI9YFLc3oYIKXe6_rTS0iwxj33Hi8l3sA8TXvbStT29USH7VXZFT2T2Ua9Brti7Ir4nztgjvmeHmI7XGbvgXxJ3PlLpsQZ1kpu2xN-uxmL9TemDRFEXd5ALaAytxKXgavKTm0x949KvzTmMOZ9jGsneT75EwQ"/>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-1 text-[#745b00] mb-3">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold tracking-wider">4.7 (1.2k reviews)</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface leading-snug mb-2 group-hover:text-primary transition-colors">Modern Marketing Strategy 2024</h3>
+<p class="text-on-surface-variant text-sm mb-6">Bersama <span class="font-semibold text-on-surface">Dimas Setiawan</span></p>
+<div class="flex items-center justify-between pt-6 border-t border-surface-container">
+<span class="text-2xl font-black text-on-surface">Rp 385.000</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Course Card 4 -->
+<div onclick="window.location.href='course-detail.html'" class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_40px_80px_-20px_rgba(116,91,0,0.12)] border border-transparent hover:border-primary/10 cursor-pointer">
+<div class="aspect-[16/10] overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="creative workspace with watercolor paints, brushes and an open sketchbook showing organic flowing shapes and patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChITlrZBnuj52OGUtgB_zXMkYKKeR1Pnhdg0SHb1nip4O-LnSLfueWijfBf4757mXN9RsLApyN1dfWom6xQUK1KZjk0DQI7jIYTftmGI-YB9gC9CLpkkgOc6DJmSOc8IZHAb6z40IajGJPb0igs69_kNOC_9CLHnViJeubO2UZbb4mSVUN2sWaCpqPuQVzMxUgodahOf3nG0KMJI7XTuiuL1ag6lLOwlnF64w4LdiVXn5bvryIe6njdA5z52GkevipioKxQ0rq_8A"/>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-1 text-[#745b00] mb-3">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold tracking-wider">5.0 (420 reviews)</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface leading-snug mb-2 group-hover:text-primary transition-colors">The Art of Storytelling</h3>
+<p class="text-on-surface-variant text-sm mb-6">Bersama <span class="font-semibold text-on-surface">Larasati Putri</span></p>
+<div class="flex items-center justify-between pt-6 border-t border-surface-container">
+<span class="text-2xl font-black text-on-surface">Rp 299.000</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Course Card 5 -->
+<div onclick="window.location.href='course-detail.html'" class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_40px_80px_-20px_rgba(116,91,0,0.12)] border border-transparent hover:border-primary/10 cursor-pointer">
+<div class="aspect-[16/10] overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="calm zen atmosphere with a single lit candle and smooth stones on a bamboo mat in soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2ogUE6Sit3PKE4z1onpkb1kcAbtmlo2xzOObU-pGVvqh9w_k37zAL-Dinjj5AeQPPOdgWvEe_qabkm-Re4ljgZ4ONRgkgPiZRP9OQIJl5JyCmeiBKDhRkGiquahG5CaIuDpl9x7TlW7_rXQFTE-3Rbh1DzizKkRChz94BMt3uTODQNYGNtgb37vjxjML50d1ojOutwFd0_YTOT8IPp0VZcH6sI_sa1tNuNjzVTX2SyLvfnHevcOQsql7Ncm9qW4eIQ9KYZUSIEbE"/>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-1 text-[#745b00] mb-3">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold tracking-wider">4.6 (1.5k reviews)</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface leading-snug mb-2 group-hover:text-primary transition-colors">Mindfulness for Busy Professionals</h3>
+<p class="text-on-surface-variant text-sm mb-6">Bersama <span class="font-semibold text-on-surface">Yoga Pratama</span></p>
+<div class="flex items-center justify-between pt-6 border-t border-surface-container">
+<span class="text-2xl font-black text-on-surface">Rp 195.000</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Course Card 6 -->
+<div onclick="window.location.href='course-detail.html'" class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300 hover:shadow-[0_40px_80px_-20px_rgba(116,91,0,0.12)] border border-transparent hover:border-primary/10 cursor-pointer">
+<div class="aspect-[16/10] overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="modern tech office interior with sleek white furniture and large windows overlooking a city skyline at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfkHme1LOlvfXwRKRREPpWnXsbTcx-xKkyNWr93qFCT4f7MWK_6NUzxQBvoyGp7QX35PCEZDhtkdEo3wRSnrO0I1A2-KMHwcRw8I2qhHJPK5IV7sBK0uTUTrvLrkWzT-nBkKvisegMGUWfyzqJPTIYi5c86ifSW8gScugdxmuXoqqFbGq8cbthkif0kGChLWgnWAYVYSIuJw72Gz2pxs2E8VtEpYhipmBizb98nPea1xw0YeeRKwaiF3h_r32ul1-zWQHzVXKHRtw"/>
+</div>
+<div class="p-8">
+<div class="flex items-center gap-1 text-[#745b00] mb-3">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold tracking-wider">4.9 (3.4k reviews)</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface leading-snug mb-2 group-hover:text-primary transition-colors">Product Management Fundamentals</h3>
+<p class="text-on-surface-variant text-sm mb-6">Bersama <span class="font-semibold text-on-surface">Nadia Utami</span></p>
+<div class="flex items-center justify-between pt-6 border-t border-surface-container">
+<span class="text-2xl font-black text-on-surface">Rp 720.000</span>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination or Load More -->
+<div class="mt-20 flex justify-center">
+<button class="bg-surface-container text-primary font-bold px-10 py-4 rounded-full hover:bg-primary-container hover:text-on-primary-container transition-all shadow-lg shadow-black/5">Muat Lebih Banyak</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f5f4ec] dark:bg-stone-900 w-full rounded-t-[3rem] mt-20 tonal-shift-bg">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 gap-8 max-w-screen-2xl mx-auto">
+<div class="flex flex-col gap-4">
+<div class="text-xl font-bold text-stone-900 dark:text-stone-50">Sunbeam Learning</div>
+<p class="text-stone-500 dark:text-stone-400 font-['Plus_Jakarta_Sans'] text-sm leading-relaxed max-w-xs">© 2024 Sunbeam Learning. Learning made tactile. Designed for the curious minds of tomorrow.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-12">
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors text-sm" href="javascript:void(0)">About Us</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors text-sm" href="javascript:void(0)">Terms of Service</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors text-sm" href="javascript:void(0)">Privacy Policy</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors text-sm" href="javascript:void(0)">Help Center</a>
+</div>
+</div>
+</footer>
+
+<!-- BottomNavBar (Mobile Only) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full rounded-t-xl z-50 bg-[#fbf9f1]/90 backdrop-blur-lg shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+<div class="flex justify-around items-center h-20 px-6 pb-2">
+<a href="index.html" class="flex flex-col items-center justify-center text-stone-400 hover:text-[#745b00] tap-highlight-none">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Beranda</span>
+</a>
+<a href="courses.html" class="flex flex-col items-center justify-center text-stone-400 hover:text-[#745b00] tap-highlight-none">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Cari</span>
+</a>
+<a href="courses.html" class="flex flex-col items-center justify-center text-stone-400 hover:text-[#745b00] tap-highlight-none">
+<span class="material-symbols-outlined">local_library</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Kelas</span>
+</a>
+<a href="profile.html" class="flex flex-col items-center justify-center text-stone-400 hover:text-[#745b00] tap-highlight-none">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Profil</span>
+</a>
+</div>
+</div>
+
+</body></html>

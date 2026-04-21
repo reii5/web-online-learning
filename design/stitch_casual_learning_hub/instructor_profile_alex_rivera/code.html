@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Instructor Profile: Alex Rivera | EduPlay</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#745b00",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#b9ecee",
+                    "surface-container-low": "#f5f4ec",
+                    "secondary-container": "#b9ecee",
+                    "tertiary-container": "#7cd9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#1b1c17",
+                    "on-background": "#1b1c17",
+                    "outline": "#7f7663",
+                    "on-secondary-fixed-variant": "#1a4e50",
+                    "outline-variant": "#d0c5af",
+                    "on-primary-container": "#6b5400",
+                    "on-tertiary-container": "#005f79",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#30312c",
+                    "tertiary-fixed": "#bce9ff",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#ffe08b",
+                    "surface-dim": "#dcdad2",
+                    "surface-container-high": "#eae8e0",
+                    "surface-bright": "#fbf9f1",
+                    "primary-fixed-dim": "#ebc246",
+                    "on-surface-variant": "#4d4635",
+                    "secondary-fixed-dim": "#9ecfd1",
+                    "secondary": "#356668",
+                    "on-tertiary-fixed": "#001f29",
+                    "on-secondary-container": "#3c6c6e",
+                    "error": "#ba1a1a",
+                    "primary": "#745b00",
+                    "inverse-on-surface": "#f3f1e9",
+                    "surface-container": "#f0eee6",
+                    "tertiary": "#006783",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#75d2f8",
+                    "on-primary-fixed-variant": "#584400",
+                    "on-primary-fixed": "#241a00",
+                    "background": "#fbf9f1",
+                    "surface-variant": "#e4e3db",
+                    "surface-container-highest": "#e4e3db",
+                    "surface": "#fbf9f1",
+                    "on-tertiary-fixed-variant": "#004d63",
+                    "primary-container": "#f2c94c",
+                    "inverse-primary": "#ebc246",
+                    "on-secondary-fixed": "#002021"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .no-border { border: none !important; }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full z-50 bg-[#fbf9f1]/80 backdrop-blur-xl no-border shadow-[0_20px_50px_rgba(27,28,23,0.05)]">
+<nav class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold text-[#745b00] tracking-[-0.02em]">EduPlay</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#4d4635] hover:bg-[#f5f4ec] rounded-xl px-4 py-2 transition-colors" href="#">Explore</a>
+<a class="text-[#4d4635] hover:bg-[#f5f4ec] rounded-xl px-4 py-2 transition-colors" href="#">My Learning</a>
+<a class="text-[#745b00] font-bold border-b-2 border-[#745b00] px-4 py-2" href="#">Instructors</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 text-[#4d4635] hover:bg-[#f5f4ec] rounded-xl transition-colors scale-95 active:scale-90">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-[#4d4635] hover:bg-[#f5f4ec] rounded-xl transition-colors scale-95 active:scale-90">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Alex Rivera Profile" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="Close-up portrait of a friendly man with glasses and casual attire smiling in a sunlit home office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuIxqVjTvcxGiIe5okWLkddnK2kETCFqwqvDXiqUMcOo2zYxCYNifTZFE6TiEJoDq4mro-zxCYZqJp-iPqZRoxVZna9XEO3RRFNrqubYvnXxfjgyObaLXiSpL4CLMG1Fr9YpRqpZ6zUuPtK7yFgCwzXZOg695WXD0FUsbyyAn4GxIfPSMwxQ-qWxvZpzB3CejMXpcfA2aW4gM9eSh9r7cOQIEfdP7Zzp8uaQENxt8Z4bfsuBjkiWQCpxhDk0LZNGrDpECFMDm_7rs"/>
+</div>
+</nav>
+</header>
+<main class="max-w-screen-2xl mx-auto px-6 md:px-12 py-8 space-y-24">
+<!-- Hero Section -->
+<section class="relative grid md:grid-cols-2 gap-12 items-center">
+<div class="order-2 md:order-1 space-y-6">
+<div class="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-medium text-sm">
+                    Verified Instructor
+                </div>
+<h1 class="text-6xl md:text-8xl font-extrabold tracking-tight text-primary">
+                    Alex Rivera
+                </h1>
+<p class="text-2xl md:text-3xl text-on-surface-variant font-medium">
+                    Senior Dev &amp; Casual Mentor
+                </p>
+<p class="text-lg text-on-surface-variant leading-relaxed max-w-lg">
+                    Blending technical rigor with a playful approach. I help curious minds master the art of coding through tactile, project-based exploration.
+                </p>
+<div class="flex gap-4 pt-4">
+<button class="px-8 py-4 bg-primary-container text-on-primary-container rounded-full font-bold shadow-lg hover:opacity-90 transition-opacity active:scale-95">
+                        Follow Alex
+                    </button>
+<button class="px-8 py-4 bg-surface-container-high text-on-surface rounded-full font-bold hover:bg-surface-container-highest transition-colors">
+                        Message
+                    </button>
+</div>
+</div>
+<div class="order-1 md:order-2 relative aspect-square">
+<div class="absolute inset-0 bg-primary-container/20 rounded-xl -rotate-6 scale-95"></div>
+<div class="absolute inset-0 bg-secondary-container/20 rounded-xl rotate-3 scale-95"></div>
+<img alt="Alex Rivera Portrait" class="relative z-10 w-full h-full object-cover rounded-xl shadow-2xl" data-alt="Stylized 3D-style portrait of a friendly male instructor with glasses and casual sweater against a soft cream background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdjiP_NDUKNFyvPW7nLKE2zgJCdIIPqx-nmGI09ECwQJ-BmDjg6F2QCesA9XvqEmffTz89lfNJG7J_EaVx2XCTGcSmptXjofQsZRzr5YAsQNbOrwLagxvJxICBvZZcB7JLYx9a0u69gdXjbYVhy3bIAM3VWBso4T45zLRDK7C0z9KlayLkfXYM7lKyOmsIJBfOaUREW7HaU2XAt0YGFiNM3gaGEkA5NMo0Rbj8eiTGWuA0PwDrHirZJn3ngD3_JF60g48wqEdVfg8"/>
+</div>
+</section>
+<!-- Stats/Impact Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm flex items-center space-x-6 border-b-4 border-primary-container">
+<div class="w-16 h-16 rounded-2xl bg-primary-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">groups</span>
+</div>
+<div>
+<h3 class="text-3xl font-extrabold text-on-surface">2.4k+</h3>
+<p class="text-on-surface-variant uppercase tracking-widest text-xs font-bold">Students Taught</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm flex items-center space-x-6 border-b-4 border-secondary-container">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl">star</span>
+</div>
+<div>
+<h3 class="text-3xl font-extrabold text-on-surface">4.9/5</h3>
+<p class="text-on-surface-variant uppercase tracking-widest text-xs font-bold">Average Rating</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm flex items-center space-x-6 border-b-4 border-tertiary-container">
+<div class="w-16 h-16 rounded-2xl bg-tertiary-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-3xl">school</span>
+</div>
+<div>
+<h3 class="text-3xl font-extrabold text-on-surface">12+</h3>
+<p class="text-on-surface-variant uppercase tracking-widest text-xs font-bold">Expert Courses</p>
+</div>
+</div>
+</section>
+<!-- Biography Section -->
+<section class="bg-surface-container-low rounded-xl p-12 md:p-20 grid md:grid-cols-5 gap-12">
+<div class="md:col-span-2">
+<h2 class="text-4xl font-extrabold text-primary mb-6">About the Mentor</h2>
+<div class="w-24 h-2 bg-primary-container rounded-full"></div>
+</div>
+<div class="md:col-span-3 space-y-6">
+<p class="text-xl text-on-surface-variant font-medium italic leading-relaxed">
+                    "I believe learning should feel like play. When we treat code as a toy instead of a tool, the fear of breaking things vanishes, and that's when real creativity begins."
+                </p>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                    Alex has spent over 15 years in the tech industry, leading engineering teams at top Silicon Valley firms. However, his true passion lies in demystifying complex logic for creative minds. 
+                </p>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+                    His **Tactile Learning Methodology** focuses on immediate application—building real-world projects that you can touch, see, and interact with from the very first lesson. No boring theory without a purpose.
+                </p>
+</div>
+</section>
+<!-- Courses Section -->
+<section class="space-y-12">
+<div class="flex justify-between items-end">
+<h2 class="text-4xl font-extrabold text-on-surface tracking-tight">Courses by Alex</h2>
+<a class="text-primary font-bold hover:underline flex items-center gap-2" href="#">
+                    View all courses <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Course Card 1 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-lg group">
+<div class="relative h-56 overflow-hidden">
+<img alt="Casual Coding with Python" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Vibrant workspace with a laptop showing colorful Python code, a cup of coffee, and soft warm indoor lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxpkitWTDyGmM-Y1L4DtjYi_4ZG81pPqecpwb6psXd08mB3b6GyvGEQHTnW_YQ9QA5GeOpnnI7jVTzeg_DiKgo9p25P3Quf5YZp8F1hzqcUF4_4eWruDURJaLiyf2VZ2B9BVA7817l-F-tZQcY13Cp67TUXMobwR_8cDXknguq9bCUOkd4jocNxw8G-unx1nORLgdFY3gYuF6uCfxw0AWHuHJ2XfT8lOxLcIkmJ0JNWfmIcOKj4J4hMwGsleSkvqdE0saXcIY9oR8"/>
+<div class="absolute top-4 left-4 bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-xs font-bold">
+                            Python
+                        </div>
+</div>
+<div class="p-8 space-y-4">
+<h3 class="text-2xl font-extrabold text-on-surface">Casual Coding with Python</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2">Master the fundamentals of Python through building fun automation scripts and mini-games.</p>
+<div class="flex justify-between items-center pt-4 border-t border-surface-variant">
+<span class="font-bold text-primary">4.9 (842)</span>
+<span class="text-on-surface-variant font-medium">12h Content</span>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-lg group">
+<div class="relative h-56 overflow-hidden">
+<img alt="Logic for Creative Minds" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Abstract 3D shapes in pastel colors floating in a clean, brightly lit digital space representing creative logic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6-yYpeQ0KpFC6gDqDtIfurxCL_S0_U8wWzG8U5rs5UfnFWxYEXdQW7qKHZQLO8Ya_tY-RvjGp7w5hR4BkCf0huiyBRR-bFegbkdxYaVWEy7Mt0ubRLAHPctx_lfVQyzElm4NsKBPhqRJ7I59Urp2E3ebmf_WiccL8-0gFwrDetSwTBPetuJd1K1Qz251Dq_11HN6jWCNgYCCh8UXkksnpqJ5ek9wvKTpPWeUUt96VchTtyqwLPc1TUA1YrA1uAUA29BnCdMg1N7Q"/>
+<div class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-xs font-bold">
+                            Architecture
+                        </div>
+</div>
+<div class="p-8 space-y-4">
+<h3 class="text-2xl font-extrabold text-on-surface">Logic for Creative Minds</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2">A course designed for designers and artists who want to understand the 'why' behind the code.</p>
+<div class="flex justify-between items-center pt-4 border-t border-surface-variant">
+<span class="font-bold text-primary">5.0 (520)</span>
+<span class="text-on-surface-variant font-medium">8h Content</span>
+</div>
+</div>
+</div>
+<!-- Course Card 3 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-lg group">
+<div class="relative h-56 overflow-hidden">
+<img alt="Advanced Project Sandbox" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Overhead shot of a messy but organized tech desk with multiple screens and development boards" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChijgR2Gl7tNChoMKyJJrBxsbtJl1gHHHkoinzN9WMfVQkFF0lap6W3o6D9Wb7RiIMgqEHXgs4JoI8O8-Dps7Z9DdLHvEyn8vpNNVLbhxcsoNREhNYBw2s9CjrmGn44UcTspp-2qxXuFE7-lZ37WTE6wiW2iIlMUxWgZp_HO7wSWWsY37Hs_mzFeJlQ-CfnydzyQbSP2co8XqMSGvmPgSogD8hiWKvCo424Fwqf65_owizYLHqo7oSYBtZKn0cYpAtcGEjtcl1wfo"/>
+<div class="absolute top-4 left-4 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold">
+                            Web Dev
+                        </div>
+</div>
+<div class="p-8 space-y-4">
+<h3 class="text-2xl font-extrabold text-on-surface">Advanced Project Sandbox</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2">Take your skills to the next level by building complex, scalable web applications from scratch.</p>
+<div class="flex justify-between items-center pt-4 border-t border-surface-variant">
+<span class="font-bold text-primary">4.8 (310)</span>
+<span class="text-on-surface-variant font-medium">24h Content</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="space-y-12">
+<h2 class="text-4xl font-extrabold text-on-surface tracking-tight text-center">What Students Say</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-surface-container-low p-10 rounded-xl relative">
+<span class="material-symbols-outlined text-primary/20 text-6xl absolute top-6 right-8">format_quote</span>
+<div class="space-y-6">
+<p class="text-lg text-on-surface leading-relaxed">
+                            "Alex has a unique way of explaining things that just click. I've tried other Python courses, but his 'Casual Coding' is the only one that didn't make me want to quit after week two."
+                        </p>
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed-dim"></div>
+<div>
+<h4 class="font-bold text-on-surface">Sarah J.</h4>
+<p class="text-sm text-on-surface-variant">UI Designer turned Dev</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-10 rounded-xl relative">
+<span class="material-symbols-outlined text-primary/20 text-6xl absolute top-6 right-8">format_quote</span>
+<div class="space-y-6">
+<p class="text-lg text-on-surface leading-relaxed">
+                            "The project-based approach is a game-changer. By the end of the first module, I had actually built something functional. His teaching style is fun, clear, and very encouraging."
+                        </p>
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-full bg-primary-fixed-dim"></div>
+<div>
+<h4 class="font-bold text-on-surface">Kevin M.</h4>
+<p class="text-sm text-on-surface-variant">Marketing Lead</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low mt-24 pt-20 pb-12">
+<div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1 space-y-6">
+<div class="text-2xl font-extrabold text-primary tracking-tight">EduPlay</div>
+<p class="text-on-surface-variant">Making high-end education accessible, tactile, and fun for the next generation of creators.</p>
+<div class="flex space-x-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">public</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">share</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-6">Explore</h4>
+<ul class="space-y-4 text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Course Catalog</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Mentorship Program</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Learning Paths</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Free Workshops</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-6">Company</h4>
+<ul class="space-y-4 text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Our Story</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Instructors</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-6">Stay Updated</h4>
+<p class="text-sm text-on-surface-variant mb-4">Get the latest course updates and tips from Alex.</p>
+<div class="flex">
+<input class="w-full px-4 py-3 bg-surface-container-highest border-none rounded-l-xl focus:ring-2 focus:ring-primary/40" placeholder="Email address" type="email"/>
+<button class="bg-primary text-on-primary px-4 py-3 rounded-r-xl font-bold">Join</button>
+</div>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto px-8 mt-20 pt-8 border-t border-surface-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-on-surface-variant text-sm">© 2024 EduPlay Learning. All rights reserved.</p>
+<div class="flex space-x-8 text-sm text-on-surface-variant">
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">Cookie Settings</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#fbf9f1]/90 backdrop-blur-2xl no-border shadow-[0_-10px_40px_rgba(27,28,23,0.03)] z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-[#4d4635] px-6 py-2" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#4d4635] px-6 py-2" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#4d4635] px-6 py-2" href="#">
+<span class="material-symbols-outlined">local_library</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">My Library</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#f2c94c] text-[#745b00] rounded-full px-6 py-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

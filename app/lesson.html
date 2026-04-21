@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sunbeam Learning - Lesson View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#584400",
+                        "outline-variant": "#d0c5af",
+                        "tertiary-fixed-dim": "#75d2f8",
+                        "surface": "#fbf9f1",
+                        "tertiary-fixed": "#bce9ff",
+                        "on-secondary-fixed": "#002021",
+                        "surface-container": "#f0eee6",
+                        "surface-container-high": "#eae8e0",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#f2c94c",
+                        "primary-fixed-dim": "#ebc246",
+                        "on-tertiary-fixed-variant": "#004d63",
+                        "secondary-fixed-dim": "#9ecfd1",
+                        "surface-tint": "#745b00",
+                        "background": "#fbf9f1",
+                        "on-primary-container": "#6b5400",
+                        "secondary": "#356668",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#005f79",
+                        "tertiary": "#006783",
+                        "secondary-container": "#b9ecee",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e4e3db",
+                        "surface-bright": "#fbf9f1",
+                        "primary": "#745b00",
+                        "surface-container-low": "#f5f4ec",
+                        "inverse-surface": "#30312c",
+                        "inverse-on-surface": "#f3f1e9",
+                        "secondary-fixed": "#b9ecee",
+                        "on-primary-fixed": "#241a00",
+                        "inverse-primary": "#ebc246",
+                        "surface-dim": "#dcdad2",
+                        "surface-variant": "#e4e3db",
+                        "on-secondary-container": "#3c6c6e",
+                        "on-surface": "#1b1c17",
+                        "on-surface-variant": "#4d4635",
+                        "on-tertiary-fixed": "#001f29",
+                        "tertiary-container": "#7cd9ff",
+                        "primary-fixed": "#ffe08b",
+                        "outline": "#7f7663",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1b1c17",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#1a4e50"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar (Shared Component Implementation) -->
+<header class="bg-[#fbf9f1]/80 dark:bg-stone-950/80 backdrop-blur-xl docked full-width top-0 z-50 shadow-[0_20px_50px_rgba(27,28,23,0.05)]">
+<div class="flex justify-between items-center px-8 h-20 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<a href="index.html" class="text-xl font-extrabold text-stone-900 dark:text-stone-50 tracking-tighter hover:text-primary transition-colors cursor-pointer">Sunbeam Learning</a>
+<nav class="hidden md:flex gap-6">
+<a class="text-stone-600 dark:text-stone-400 font-medium font-['Plus_Jakarta_Sans'] font-semibold tracking-tight hover:text-[#745b00] dark:hover:text-[#f2c94c] transition-colors" href="index.html">Beranda</a>
+<a class="text-[#745b00] dark:text-[#f2c94c] font-bold border-b-2 border-[#f2c94c] font-['Plus_Jakarta_Sans'] font-semibold tracking-tight" href="courses.html">Kelas</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium font-['Plus_Jakarta_Sans'] font-semibold tracking-tight hover:text-[#745b00] dark:hover:text-[#f2c94c] transition-colors" href="instructor.html">Instruktur</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium font-['Plus_Jakarta_Sans'] font-semibold tracking-tight hover:text-[#745b00] dark:hover:text-[#f2c94c] transition-colors" href="chat.html">Mentor Chat</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center bg-surface-container-highest px-4 py-2 rounded-full gap-2">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-medium" placeholder="Search lessons..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="notifications">notifications</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User avatar" data-alt="close-up portrait of a smiling young professional man with short dark hair in a clean minimalist studio setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKdyyV7dj7XfR4eCgkiD8ETAffA_PuL42rAT6J1OLIH4qah0WXLyM0i3wEbEYU-kCskOav2DHRu5ttHIM1lnmjDh8rRFUT7hCWHFLD_mLhEAJb-1alUFC3e2WWEIzf081UWdAjwPSpygbGGyuwNkgA6RZPt2i_iKv7t2IxzSFy8CCk3uH_EXuUDquHIrFZN3L1CoA5qvG4oGRVKZM1gGVQ9lTsALtLtZ1dU21HTg61nzo2G_YSr7qHz8PTZrAZvt3AV6owbyvsMZg"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-screen-2xl mx-auto px-8 pt-28 pb-12">
+<!-- Breadcrumb Header -->
+<nav class="flex items-center gap-2 mb-8 text-sm font-medium">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="javascript:void(0)">Mastering Visual Design</a>
+<span class="material-symbols-outlined text-outline-variant text-xs" data-icon="chevron_right">chevron_right</span>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="javascript:void(0)">Module 3: Advanced Color Theory</a>
+<span class="material-symbols-outlined text-outline-variant text-xs" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-bold">The Psychology of Warm Palettes</span>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Video Player Column -->
+<section class="lg:col-span-8 flex flex-col gap-8">
+<!-- Large Video Player with Tactile Design -->
+<div class="relative aspect-video bg-surface-container-low rounded-xl overflow-hidden shadow-2xl group border-8 border-surface-container">
+<img class="w-full h-full object-cover opacity-90" data-alt="cinematic shot of a minimalist design studio with soft sunlight casting long shadows across a warm wooden desk and cream colored walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA79C3_5C3RmUCbpr5WfXrVpSONHwGTGGl-mUy5r5xlxQIaNOd2R0Rv31x98Gx0wRLVQiFvgCmdLXDeLWOIusih4-WizjnOY7upYjESpFAG0hB1FRH8cBYP0-haBxyzDktK1VOSiwKTTAKfHQVBf5VcXO9XGy2gDsdBsFXqrBT5YL2bPHnoFul4bEGZ_Pl3kB2UmCmEmJM1CK2MMdGi9sTaLcqfbTYQmzIc3DSN85qvjscBquGfgAaLew7NBeydnUKNa9cgL2vUGkc"/>
+<!-- Custom Player UI Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/40 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity">
+<div class="flex items-center gap-6">
+<button class="bg-primary-container text-on-primary-container w-14 h-14 rounded-full flex items-center justify-center shadow-lg transform active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<div class="flex-1">
+<div class="h-2 w-full bg-white/30 rounded-full overflow-hidden">
+<div class="h-full w-1/3 bg-primary-container rounded-full shadow-[0_0_10px_rgba(242,201,76,0.6)]"></div>
+</div>
+<div class="flex justify-between mt-2 text-xs font-bold text-white tracking-widest uppercase">
+<span>12:45</span>
+<span>42:10</span>
+</div>
+</div>
+<button class="text-white material-symbols-outlined" data-icon="settings">settings</button>
+<button class="text-white material-symbols-outlined" data-icon="fullscreen">fullscreen</button>
+</div>
+</div>
+<!-- Centered Play Button (Initial State) -->
+<div class="absolute inset-0 flex items-center justify-center group-hover:hidden">
+<div class="w-24 h-24 rounded-full bg-primary-container/90 backdrop-blur-md flex items-center justify-center text-on-primary-container shadow-2xl">
+<span class="material-symbols-outlined text-5xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+<!-- Lesson Info Content -->
+<div class="bg-surface-container-lowest p-10 rounded-xl">
+<h1 class="text-4xl font-extrabold text-on-surface tracking-tight mb-4">The Psychology of Warm Palettes</h1>
+<p class="text-lg text-on-surface-variant leading-relaxed mb-8">
+                        In this lesson, we explore how earthy tones and warm yellows create a sense of trust and approachability in UI design. We'll examine the historical significance of these colors in physical media and how to translate that tactile feeling into digital interfaces.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-2 bg-secondary-container/50 px-4 py-2 rounded-full text-on-secondary-container font-semibold text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+                            Resource Pack (PDF)
+                        </div>
+<div class="flex items-center gap-2 bg-tertiary-container/30 px-4 py-2 rounded-full text-on-tertiary-container font-semibold text-sm">
+<span class="material-symbols-outlined text-lg" data-icon="description">description</span>
+                            Color Study Workbook
+                        </div>
+</div>
+</div>
+</section>
+<!-- Lesson Sidebar Column -->
+<aside class="lg:col-span-4 sticky top-28 bg-surface-container-low rounded-xl flex flex-col h-[calc(100vh-10rem)] overflow-hidden shadow-xl shadow-stone-900/5">
+<div class="p-8 border-b border-outline-variant/10">
+<h2 class="text-xl font-extrabold text-on-surface mb-2">Course Progress</h2>
+<div class="flex items-center gap-3">
+<div class="flex-1 h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full w-[65%] bg-primary shadow-[0_0_8px_rgba(116,91,0,0.2)] rounded-full"></div>
+</div>
+<span class="text-sm font-bold text-primary">65%</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4">
+<!-- Module 1 -->
+<div class="space-y-2">
+<div class="flex items-center gap-3 px-4 py-2">
+<span class="text-[10px] font-black uppercase tracking-widest text-outline">Module 1</span>
+<div class="h-px flex-1 bg-outline-variant/20"></div>
+</div>
+<div class="flex items-center gap-4 px-4 py-4 rounded-lg bg-surface-container-highest/50">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-secondary-fixed-dim/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant text-sm" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface-variant">Introduction to Tactile UI</p>
+<p class="text-[10px] text-outline font-medium">12 mins • COMPLETED</p>
+</div>
+</div>
+</div>
+<!-- Module 2 -->
+<div class="space-y-2">
+<div class="flex items-center gap-3 px-4 py-2">
+<span class="text-[10px] font-black uppercase tracking-widest text-outline">Module 2</span>
+<div class="h-px flex-1 bg-outline-variant/20"></div>
+</div>
+<div class="flex items-center gap-4 px-4 py-4 rounded-lg bg-surface-container-lowest shadow-sm border border-primary/10">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-sm" data-icon="play_circle" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-primary">The Psychology of Warm Palettes</p>
+<p class="text-[10px] text-primary/70 font-medium">42 mins • CURRENTLY WATCHING</p>
+</div>
+</div>
+<div class="flex items-center gap-4 px-4 py-4 rounded-lg hover:bg-surface-container-highest/40 transition-colors cursor-pointer">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="lock">lock</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface-variant">The Rule of Three Surfaces</p>
+<p class="text-[10px] text-outline font-medium">28 mins</p>
+</div>
+</div>
+</div>
+<!-- Module 3 -->
+<div class="space-y-2">
+<div class="flex items-center gap-3 px-4 py-2">
+<span class="text-[10px] font-black uppercase tracking-widest text-outline">Module 3</span>
+<div class="h-px flex-1 bg-outline-variant/20"></div>
+</div>
+<div class="flex items-center gap-4 px-4 py-4 rounded-lg opacity-60">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="lock">lock</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface-variant">Final Project: Tactile Dashboard</p>
+<p class="text-[10px] text-outline font-medium">90 mins</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-surface-container-highest/30">
+<button class="w-full py-4 bg-on-surface text-surface rounded-xl font-bold tracking-tight hover:scale-[1.02] transition-transform active:scale-95 shadow-lg">
+                        Discussion Forum (12)
+                    </button>
+</div>
+</aside>
+</div>
+</main>
+<!-- Success/Navigation Footer (Shared Component Guidance) -->
+<footer class="fixed bottom-0 left-0 w-full bg-[#fbf9f1]/90 dark:bg-stone-950/90 backdrop-blur-lg z-50 border-t border-surface-container-highest">
+<div class="max-w-screen-2xl mx-auto flex justify-between items-center h-24 px-8">
+<button class="flex items-center gap-3 px-6 py-3 rounded-full text-on-surface-variant font-bold hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                Previous Lesson
+            </button>
+<div class="hidden md:flex flex-col items-center">
+<span class="text-[10px] font-black uppercase tracking-[0.2em] text-outline">Next Up</span>
+<span class="text-sm font-extrabold text-on-surface">The Rule of Three Surfaces</span>
+</div>
+<button class="flex items-center gap-3 px-10 py-4 rounded-full bg-primary-container text-on-primary-container font-extrabold shadow-xl shadow-primary/10 hover:shadow-primary/20 hover:scale-105 transition-all active:scale-95">
+                Next Lesson
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</footer>
+<!-- Global Footer (Shared Component) -->
+<div class="w-full bg-[#f5f4ec] dark:bg-stone-900 rounded-t-[3rem] mt-24 pb-32">
+<footer class="flex flex-col md:flex-row justify-between items-center px-12 py-16 gap-8 max-w-screen-2xl mx-auto">
+<div class="flex flex-col gap-4 text-center md:text-left">
+<span class="text-xl font-bold text-stone-900 dark:text-stone-50">Sunbeam Learning</span>
+<p class="font-['Plus_Jakarta_Sans'] text-sm leading-relaxed text-stone-500 dark:text-stone-400 max-w-xs">© 2024 Sunbeam Learning. Learning made tactile.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-stone-500 dark:text-stone-400 font-medium hover:text-stone-900 transition-colors" href="javascript:void(0)">About Us</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium hover:text-stone-900 transition-colors" href="javascript:void(0)">Terms of Service</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium hover:text-stone-900 transition-colors" href="javascript:void(0)">Privacy Policy</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium hover:text-stone-900 transition-colors" href="javascript:void(0)">Help Center</a>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary-container transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="language">language</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:bg-primary-container transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="mail">mail</span>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sunbeam - User Profile Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#30312c",
+                    "surface-container-low": "#f5f4ec",
+                    "inverse-on-surface": "#f3f1e9",
+                    "surface-container": "#f0eee6",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#004d63",
+                    "outline-variant": "#d0c5af",
+                    "tertiary-container": "#7cd9ff",
+                    "primary-container": "#f2c94c",
+                    "on-tertiary-container": "#005f79",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed-variant": "#1a4e50",
+                    "primary-fixed-dim": "#ebc246",
+                    "surface": "#fbf9f1",
+                    "primary": "#745b00",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#584400",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e4e3db",
+                    "on-secondary-fixed": "#002021",
+                    "inverse-primary": "#ebc246",
+                    "secondary-fixed-dim": "#9ecfd1",
+                    "secondary": "#356668",
+                    "on-surface": "#1b1c17",
+                    "on-primary-container": "#6b5400",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#006783",
+                    "surface-bright": "#fbf9f1",
+                    "outline": "#7f7663",
+                    "on-primary-fixed": "#241a00",
+                    "background": "#fbf9f1",
+                    "on-secondary-container": "#3c6c6e",
+                    "surface-tint": "#745b00",
+                    "primary-fixed": "#ffe08b",
+                    "surface-container-highest": "#e4e3db",
+                    "secondary-container": "#b9ecee",
+                    "on-surface-variant": "#4d4635",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#75d2f8",
+                    "secondary-fixed": "#b9ecee",
+                    "surface-dim": "#dcdad2",
+                    "tertiary-fixed": "#bce9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#001f29",
+                    "on-background": "#1b1c17",
+                    "surface-container-high": "#eae8e0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 max-w-7xl mx-auto bg-stone-50/80 dark:bg-stone-900/80 backdrop-blur-xl transition-all">
+<div class="text-2xl font-bold text-yellow-800 dark:text-yellow-400 font-plus-jakarta-sans tracking-tight">Sunbeam</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-yellow-800 dark:text-yellow-300 border-b-2 border-yellow-500 pb-1 font-medium transition-all" href="#">Profile</a>
+<a class="text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all font-medium" href="#">Settings</a>
+<a class="text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all font-medium" href="#">Security</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all active:scale-95">
+<span class="material-symbols-outlined text-stone-500" data-icon="help">help</span>
+</button>
+<button class="p-2 rounded-full hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all active:scale-95">
+<span class="material-symbols-outlined text-stone-500" data-icon="logout">logout</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high border-2 border-primary-container">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Portrait of a young Indonesian man named Budi Santoso with a friendly smile, natural lighting, warm educational environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATfDHSg8wiBTFVcYU9Gn99TKh37fpPoMO2nLyQ7Q5jxPcvFubflB3t5U68zJYZZv8FYBwH4Muk036DofLgT5R6TKODLeiU6xFLBsrBwsbguZ6TcumQt8NE6AJ1yyEmbPMevY7Iw5NBpkKGjjzFsSlPrz4309iYvLJ40LS5XUdayUtziVZuJrmLKX9tMcQURIXq8rae_5hSmtBj06vWP1V1R4I6vN7aMBozTrwxZLKWF2verGD6n9BAu4sRHv_fL8YYmZQ3hoeZhrY"/>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-6 pt-32 pb-40">
+<!-- Profile Hero Section -->
+<section class="mb-12 flex flex-col md:flex-row items-center md:items-end gap-8 bg-surface-container-low p-10 rounded-xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/20 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+<div class="relative z-10 w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-surface-container-lowest shadow-xl overflow-hidden">
+<img alt="Budi Santoso Profile" class="w-full h-full object-cover" data-alt="Clear frontal studio portrait of a professional man with clean-cut hair and a warm expression, soft golden backlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTsikBH-B0qW-xtj7RN7kTICoJaA1ZMo7sq91oAKnn1E_MWHn_ulu16cyGdQ-ygUV3_8C0omfbwkEG48HRkrXf7YDl_KoM7wHfORHIUKc_GYjznaO4z-_NYm2zlAtcgvYe4LYEQvPPm9rQpglJMYkvUJ8rf1iWYcdcFw4un0qyBxDQ9vVymLEIE87-yBZXClSh7nm3m48xEdc7rbrSDGZcPyxk0TWne9wjNvdc7vQLA3plE8uEl3zKBZmoYPki44FOqI70bG6qqxA"/>
+</div>
+<div class="relative z-10 text-center md:text-left">
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-2">Budi Santoso</h1>
+<p class="text-on-surface-variant font-medium opacity-80">Premium Learner • Member since 2023</p>
+<div class="mt-4 flex gap-3 justify-center md:justify-start">
+<span class="bg-primary-container/30 text-on-primary-container px-4 py-1.5 rounded-full text-sm font-bold tracking-wide">64% COURSE PROGRESS</span>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 gap-8">
+<!-- Account Information -->
+<section class="bg-surface-container-lowest p-8 md:p-10 rounded-lg">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="person">person</span>
+</div>
+<h2 class="text-2xl font-bold tracking-tight">Account Information</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Full Name</label>
+<input class="w-full bg-surface-container-highest border-none rounded-DEFAULT px-5 py-4 text-on-surface focus:ring-2 focus:ring-primary/40 focus:bg-surface-container-low transition-all" type="text" value="Budi Santoso"/>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Email Address</label>
+<input class="w-full bg-surface-container-highest border-none rounded-DEFAULT px-5 py-4 text-on-surface focus:ring-2 focus:ring-primary/40 focus:bg-surface-container-low transition-all" type="email" value="budi.santoso@example.id"/>
+</div>
+</div>
+<div class="mt-8 flex justify-end">
+<button class="bg-primary-container hover:shadow-lg hover:brightness-105 active:scale-95 transition-all text-on-primary-container font-bold px-8 py-3 rounded-full">Save Changes</button>
+</div>
+</section>
+<!-- Settings Grid -->
+<div class="grid md:grid-cols-2 gap-8">
+<!-- Notification Settings -->
+<section class="bg-surface-container-lowest p-8 rounded-lg flex flex-col">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="notifications">notifications</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">Notifications</h2>
+</div>
+<div class="space-y-6 flex-grow">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-DEFAULT">
+<div>
+<p class="font-bold text-on-surface">Email Notifications</p>
+<p class="text-xs text-on-surface-variant">Weekly progress reports</p>
+</div>
+<button class="w-14 h-8 bg-primary-container rounded-full relative transition-all shadow-inner">
+<div class="absolute right-1 top-1 w-6 h-6 bg-white rounded-full shadow-md"></div>
+</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-DEFAULT">
+<div>
+<p class="font-bold text-on-surface">Push Notifications</p>
+<p class="text-xs text-on-surface-variant">Instant learning reminders</p>
+</div>
+<button class="w-14 h-8 bg-surface-container-highest rounded-full relative transition-all shadow-inner">
+<div class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow-md"></div>
+</button>
+</div>
+</div>
+</section>
+<!-- Privacy Settings -->
+<section class="bg-surface-container-lowest p-8 rounded-lg flex flex-col">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="security">security</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">Privacy Settings</h2>
+</div>
+<div class="space-y-6 flex-grow">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-DEFAULT">
+<div>
+<p class="font-bold text-on-surface">Public Profile</p>
+<p class="text-xs text-on-surface-variant">Let others see your profile</p>
+</div>
+<button class="w-14 h-8 bg-surface-container-highest rounded-full relative transition-all shadow-inner">
+<div class="absolute left-1 top-1 w-6 h-6 bg-white rounded-full shadow-md"></div>
+</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-DEFAULT">
+<div>
+<p class="font-bold text-on-surface">Share Learning Activity</p>
+<p class="text-xs text-on-surface-variant">Social community updates</p>
+</div>
+<button class="w-14 h-8 bg-primary-container rounded-full relative transition-all shadow-inner">
+<div class="absolute right-1 top-1 w-6 h-6 bg-white rounded-full shadow-md"></div>
+</button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-stone-50/80 dark:bg-stone-900/80 backdrop-blur-2xl rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] md:hidden">
+<button class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:text-yellow-600 dark:hover:text-yellow-300 transition-transform duration-300">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="text-[11px] font-bold uppercase tracking-widest mt-1">Learn</span>
+</button>
+<button class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:text-yellow-600 dark:hover:text-yellow-300 transition-transform duration-300">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span class="text-[11px] font-bold uppercase tracking-widest mt-1">Growth</span>
+</button>
+<button class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:text-yellow-600 dark:hover:text-yellow-300 transition-transform duration-300">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-[11px] font-bold uppercase tracking-widest mt-1">Community</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-yellow-200 dark:bg-yellow-900/40 text-yellow-900 dark:text-yellow-100 rounded-full px-5 py-2 transition-transform duration-300">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[11px] font-bold uppercase tracking-widest mt-1">Account</span>
+</button>
+</nav>
+</body></html>

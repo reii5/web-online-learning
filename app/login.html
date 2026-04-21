@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Masuk - Sunbeam Learning</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#fbf9f1",
+                        "primary": "#745b00",
+                        "primary-container": "#f2c94c",
+                        "on-primary-container": "#6b5400",
+                        "secondary": "#356668",
+                        "secondary-container": "#b9ecee",
+                        "on-secondary-container": "#3c6c6e",
+                        "surface-container-low": "#f5f4ec",
+                        "surface-container-highest": "#e4e3db",
+                        "on-surface": "#1b1c17",
+                        "on-surface-variant": "#4d4635",
+                        "outline": "#7f7663"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex items-center justify-center relative overflow-hidden">
+    <!-- Background Decor -->
+    <div class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-primary-container/20 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-secondary-container/20 rounded-full blur-3xl -z-10 -translate-x-1/3 translate-y-1/3"></div>
+
+    <div class="w-full max-w-5xl mx-auto p-6 md:p-12 flex flex-col md:flex-row items-center gap-12 z-10">
+        <!-- Left Side: Hero Text -->
+        <div class="flex-1 text-center md:text-left">
+            <a href="index.html" class="inline-block text-3xl font-extrabold text-stone-900 hover:text-primary transition-colors cursor-pointer mb-8">Sunbeam Learning</a>
+            <h1 class="text-4xl md:text-6xl font-black text-[#745b00] tracking-tight leading-tight mb-6">
+                Lanjutkan <br/>
+                Perjalanan <br/>
+                Belajarmu.
+            </h1>
+            <p class="text-on-surface-variant text-lg font-medium">Akses ribuan materi, lanjutkan proyekmu, dan hubungi mentor-mu hari ini.</p>
+        </div>
+
+        <!-- Right Side: Login Card -->
+        <div class="w-full max-w-md bg-white/60 backdrop-blur-2xl p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(116,91,0,0.05)] border border-white">
+            <h2 class="text-2xl font-bold mb-8 text-center text-[#745b00]">Selamat Datang Kembali!</h2>
+            
+            <form action="profile.html" method="GET" class="space-y-6">
+                <div class="space-y-2">
+                    <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-2">Email Address</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">mail</span>
+                        <input type="email" required class="w-full pl-12 pr-4 py-4 bg-surface-container-highest/50 border-none rounded-full text-on-surface focus:ring-2 focus:ring-primary/40 focus:bg-surface-container-low transition-all" placeholder="budi@example.com">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center ml-2">
+                        <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Password</label>
+                        <a href="javascript:void(0)" class="text-xs font-bold text-primary hover:underline">Lupa password?</a>
+                    </div>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">lock</span>
+                        <input type="password" required class="w-full pl-12 pr-12 py-4 bg-surface-container-highest/50 border-none rounded-full text-on-surface focus:ring-2 focus:ring-primary/40 focus:bg-surface-container-low transition-all" placeholder="••••••••">
+                        <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined">visibility</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-[#f2c94c] text-[#745b00] py-4 rounded-full font-extrabold text-lg shadow-lg shadow-[#f2c94c]/30 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer">
+                    Masuk Sekarang
+                </button>
+            </form>
+
+            <div class="mt-8 text-center">
+                <p class="text-sm font-medium text-on-surface-variant">Belum punya akun? <a href="register.html" class="text-primary font-bold hover:underline">Daftar di sini</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
