@@ -173,6 +173,53 @@
                     </form>
                 </div>
 
+                </div>
+
+                <!-- Add Lesson Section -->
+                <div class="bg-white rounded-3xl shadow-lg p-8 border border-stone-100">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="material-symbols-outlined text-secondary text-3xl">video_library</span>
+                        <h3 class="text-2xl font-bold">Unggah Materi Video</h3>
+                    </div>
+                    
+                    <form id="addLessonForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Pilih Kelas</label>
+                                <select id="lCourse" required class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-secondary/40">
+                                    <option value="">Memuat kelas...</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Judul Materi</label>
+                                <input id="lTitle" required class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-secondary/40" placeholder="Misal: 01. Pengenalan Dasar">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">URL Video (YouTube / MP4 Link)</label>
+                            <input id="lVideoUrl" required class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-secondary/40" placeholder="https://youtube.com/...">
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Durasi (Menit)</label>
+                                <input id="lDuration" type="number" required value="10" min="1" class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-secondary/40">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Urutan Materi (Ke-)</label>
+                                <input id="lOrder" type="number" required value="1" min="1" class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-secondary/40">
+                            </div>
+                        </div>
+
+                        <div class="pt-4">
+                            <button type="submit" class="bg-secondary text-on-secondary font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform shadow-lg">
+                                Simpan Materi
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
                 <!-- Existing Courses List -->
                 <div class="bg-white rounded-3xl shadow-lg p-8 border border-stone-100">
                     <h3 class="text-2xl font-bold mb-6">Kelas Anda</h3>
@@ -245,6 +292,14 @@
                     <span class="font-bold text-primary">Rp ${parseInt(c.price).toLocaleString('id-ID')}</span>
                 </div>
             `).join('');
+
+            // Update Add Lesson Dropdown
+            const lessonSelect = document.getElementById('lCourse');
+            if(courses.length > 0) {
+                lessonSelect.innerHTML = courses.map(c => `<option value="${c.id}">${c.title}</option>`).join('');
+            } else {
+                lessonSelect.innerHTML = '<option value="">Buat kelas dulu</option>';
+            }
         }
 
         await loadCourses();
@@ -277,6 +332,43 @@
             }
 
             btn.innerText = 'Simpan Kelas Ke Database';
+            btn.disabled = false;
+        });
+
+        // 5. Handle Add Lesson Submission
+        document.getElementById('addLessonForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerText = 'Menyimpan...';
+            btn.disabled = true;
+
+            const courseId = document.getElementById('lCourse').value;
+            if(!courseId) {
+                alert('Pilih kelas terlebih dahulu!');
+                btn.innerText = 'Simpan Materi';
+                btn.disabled = false;
+                return;
+            }
+
+            const lessonData = {
+                course_id: courseId,
+                title: document.getElementById('lTitle').value,
+                video_url: document.getElementById('lVideoUrl').value,
+                duration_minutes: parseInt(document.getElementById('lDuration').value) || 0,
+                order_index: parseInt(document.getElementById('lOrder').value) || 1,
+                is_locked: false // Default buka kunci
+            };
+
+            const { error } = await supabase.from('lessons').insert([lessonData]);
+
+            if (error) {
+                alert('Gagal menambah materi: ' + error.message);
+            } else {
+                alert('Materi berhasil ditambahkan ke kelas!');
+                e.target.reset();
+            }
+
+            btn.innerText = 'Simpan Materi';
             btn.disabled = false;
         });
     });
