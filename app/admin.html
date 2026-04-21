@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Admin Dashboard - Sunbeam Learning</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#fbf9f1",
+                        "primary": "#745b00",
+                        "primary-container": "#f2c94c",
+                        "on-primary-container": "#6b5400",
+                        "secondary": "#356668",
+                        "secondary-container": "#b9ecee",
+                        "on-secondary-container": "#3c6c6e",
+                        "surface-container-low": "#f5f4ec",
+                        "surface-container-highest": "#e4e3db",
+                        "on-surface": "#1b1c17",
+                        "on-surface-variant": "#4d4635",
+                        "outline": "#7f7663"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.5); }
+    </style>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="bg-surface text-on-surface min-h-screen relative">
+    
+    <!-- Restrict Access Overlay -->
+    <div id="accessDeniedOverlay" class="fixed inset-0 z-50 bg-surface flex flex-col items-center justify-center hidden">
+        <span class="material-symbols-outlined text-6xl text-primary mb-4">gpp_maybe</span>
+        <h1 class="text-3xl font-bold mb-2">Akses Ditolak</h1>
+        <p class="text-on-surface-variant mb-6">Anda tidak memiliki izin (role instructor/admin) untuk mengakses halaman ini.</p>
+        <a href="index.html" class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold">Kembali ke Beranda</a>
+    </div>
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-surface-container-low shadow-xl flex flex-col h-full z-20">
+            <div class="p-6">
+                <a href="index.html" class="text-2xl font-extrabold text-stone-900 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">local_library</span>
+                    Sunbeam
+                </a>
+            </div>
+            <nav class="flex-1 px-4 space-y-2 mt-4">
+                <a href="#" class="flex items-center gap-3 bg-primary-container text-on-primary-container px-4 py-3 rounded-xl font-bold transition-all">
+                    <span class="material-symbols-outlined">dashboard</span> Dashboard
+                </a>
+                <a href="#" class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-highest px-4 py-3 rounded-xl font-medium transition-all">
+                    <span class="material-symbols-outlined">video_library</span> Materi Video
+                </a>
+                <a href="#" class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-highest px-4 py-3 rounded-xl font-medium transition-all">
+                    <span class="material-symbols-outlined">group</span> Siswa
+                </a>
+            </nav>
+            <div class="p-4">
+                <button id="logoutBtn" class="w-full flex items-center gap-3 text-red-600 hover:bg-red-50 px-4 py-3 rounded-xl font-bold transition-all">
+                    <span class="material-symbols-outlined">logout</span> Keluar
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 h-full overflow-y-auto bg-surface relative">
+            <!-- Header -->
+            <header class="h-20 px-8 flex items-center justify-between glass-panel sticky top-0 z-10">
+                <h2 class="text-xl font-bold text-on-surface">Instructor Dashboard</h2>
+                <div class="flex items-center gap-4">
+                    <div id="adminProfileInfo" class="flex items-center gap-3">
+                        <span class="font-bold text-sm" id="adminName">Loading...</span>
+                        <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+                            <img id="adminAvatar" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="p-8 max-w-5xl mx-auto space-y-8">
+                
+                <!-- Stats Row -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary-container/30 flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined">school</span>
+                        </div>
+                        <div>
+                            <p class="text-sm text-on-surface-variant font-medium">Total Kelas</p>
+                            <p class="text-2xl font-bold" id="totalCoursesCount">0</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined">group</span>
+                        </div>
+                        <div>
+                            <p class="text-sm text-on-surface-variant font-medium">Total Siswa</p>
+                            <p class="text-2xl font-bold">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Course Section -->
+                <div class="bg-white rounded-3xl shadow-lg p-8 border border-stone-100">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="material-symbols-outlined text-primary text-3xl">add_circle</span>
+                        <h3 class="text-2xl font-bold">Unggah Kelas Baru</h3>
+                    </div>
+                    
+                    <form id="addCourseForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Judul Kelas</label>
+                                <input id="cTitle" required class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-primary/40" placeholder="Misal: UI/UX Design Masterclass">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Kategori</label>
+                                <select id="cCategory" class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-primary/40">
+                                    <option value="Design">Design</option>
+                                    <option value="Development">Development</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Self-Growth">Self-Growth</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Deskripsi Kelas</label>
+                            <textarea id="cDesc" required rows="3" class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-primary/40" placeholder="Jelaskan apa yang akan dipelajari..."></textarea>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Harga (Rp)</label>
+                                <input id="cPrice" type="number" value="0" min="0" class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-primary/40">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Level</label>
+                                <select id="cLevel" class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-primary/40">
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Advanced">Advanced</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">URL Thumbnail (Gambar)</label>
+                                <input id="cThumbnail" required class="w-full bg-surface-container-low border-none rounded-xl px-5 py-3 focus:ring-2 focus:ring-primary/40" placeholder="https://...">
+                            </div>
+                        </div>
+
+                        <div class="pt-4">
+                            <button type="submit" class="bg-primary text-on-primary font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform shadow-lg">
+                                Simpan Kelas Ke Database
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Existing Courses List -->
+                <div class="bg-white rounded-3xl shadow-lg p-8 border border-stone-100">
+                    <h3 class="text-2xl font-bold mb-6">Kelas Anda</h3>
+                    <div id="coursesList" class="space-y-4">
+                        <p class="text-stone-500 text-sm">Memuat kelas...</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+<script type="module">
+    import { supabase } from './js/supabase.js';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        // 1. Auth Check & Role Validation
+        const { data: { user } } = await supabase.auth.getUser();
+        
+        if (!user) {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        const { data: profile } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', user.id)
+            .single();
+
+        if (!profile || (profile.role !== 'instructor' && profile.role !== 'admin')) {
+            document.getElementById('accessDeniedOverlay').classList.remove('hidden');
+            return;
+        }
+
+        // 2. Setup Profile Info
+        document.getElementById('adminName').innerText = profile.full_name;
+        if(profile.avatar_url) document.getElementById('adminAvatar').src = profile.avatar_url;
+
+        // Logout Event
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            window.location.href = 'index.html';
+        });
+
+        // 3. Load Instructor's Courses
+        async function loadCourses() {
+            const { data: courses, error } = await supabase
+                .from('courses')
+                .select('*')
+                .eq('instructor_id', user.id)
+                .order('created_at', { ascending: false });
+
+            const listEl = document.getElementById('coursesList');
+            document.getElementById('totalCoursesCount').innerText = courses ? courses.length : 0;
+
+            if (error || !courses || courses.length === 0) {
+                listEl.innerHTML = '<p class="text-stone-500 text-sm">Belum ada kelas yang diunggah.</p>';
+                return;
+            }
+
+            listEl.innerHTML = courses.map(c => `
+                <div class="flex items-center gap-4 p-4 border border-stone-100 rounded-xl hover:bg-stone-50 transition-colors">
+                    <img src="${c.thumbnail_url || 'https://via.placeholder.com/150'}" class="w-16 h-16 rounded-lg object-cover">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-lg">${c.title}</h4>
+                        <p class="text-sm text-stone-500">${c.category} • ${c.level}</p>
+                    </div>
+                    <span class="font-bold text-primary">Rp ${parseInt(c.price).toLocaleString('id-ID')}</span>
+                </div>
+            `).join('');
+        }
+
+        await loadCourses();
+
+        // 4. Handle Add Course Submission
+        document.getElementById('addCourseForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.innerText = 'Mengunggah...';
+            btn.disabled = true;
+
+            const courseData = {
+                title: document.getElementById('cTitle').value,
+                description: document.getElementById('cDesc').value,
+                category: document.getElementById('cCategory').value,
+                level: document.getElementById('cLevel').value,
+                price: parseFloat(document.getElementById('cPrice').value) || 0,
+                thumbnail_url: document.getElementById('cThumbnail').value,
+                instructor_id: user.id
+            };
+
+            const { error } = await supabase.from('courses').insert([courseData]);
+
+            if (error) {
+                alert('Gagal menambah kelas: ' + error.message);
+            } else {
+                alert('Kelas berhasil ditambahkan!');
+                e.target.reset();
+                await loadCourses();
+            }
+
+            btn.innerText = 'Simpan Kelas Ke Database';
+            btn.disabled = false;
+        });
+    });
+</script>
+</html>
