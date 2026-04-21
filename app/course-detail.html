@@ -234,21 +234,8 @@
                         <span class="w-10 h-1px bg-primary-container"></span>
                         Apa yang akan dipelajari
                     </h2>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        {[
-                        "Membangun skrip otomasi sehari-hari",
-                        "Memahami logika pemrograman universal",
-                        "Manipulasi data dengan library modern",
-                        "Membangun API sederhana dengan Flask",
-                        "Best practices penulisan kode yang bersih",
-                        "Pemecahan masalah secara algoritmis"
-                        ].map(item =&gt; (
-                        `<div class="flex items-start gap-3 p-4 bg-white rounded-lg shadow-sm">
-                            <span class="material-symbols-outlined text-primary"
-                                style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                            <span class="font-medium text-on-surface-variant">${item}</span>
-                        </div>`
-                        )).join('')}
+                    <div id="benefitsContainer" class="grid md:grid-cols-2 gap-4">
+                        <div class="col-span-full text-stone-400 text-sm">Memuat manfaat kursus...</div>
                     </div>
                 </section>
                 <!-- Kurikulum -->
@@ -258,76 +245,10 @@
                             <span class="w-10 h-1px bg-primary-container"></span>
                             Kurikulum
                         </h2>
-                        <p class="text-sm font-bold text-on-surface-variant">12 MODUL • 48 VIDEO</p>
+                        <p class="text-sm font-bold text-on-surface-variant">DAFTAR MATERI</p>
                     </div>
-                    <div class="space-y-4">
-                        <!-- Module 1 -->
-                        <div
-                            class="group bg-white rounded-lg border border-outline-variant/10 hover:border-primary-container transition-all">
-                            <div class="p-6 flex items-center justify-between cursor-pointer">
-                                <div class="flex items-center gap-4">
-                                    <span
-                                        class="text-2xl font-black text-surface-container-highest group-hover:text-primary-container transition-colors">01</span>
-                                    <div>
-                                        <h4 class="font-bold text-lg">Perkenalan &amp; Setup Lingkungan</h4>
-                                        <p class="text-sm text-on-surface-variant">3 video • 45 menit</p>
-                                    </div>
-                                </div>
-                                <span class="material-symbols-outlined text-outline">expand_more</span>
-                            </div>
-                        </div>
-                        <!-- Module 2 -->
-                        <div
-                            class="group bg-white rounded-lg border border-outline-variant/10 hover:border-primary-container transition-all shadow-md">
-                            <div class="p-6 flex items-center justify-between cursor-pointer">
-                                <div class="flex items-center gap-4">
-                                    <span class="text-2xl font-black text-primary-container">02</span>
-                                    <div>
-                                        <h4 class="font-bold text-lg">Tipe Data &amp; Variabel: Sang Fondasi</h4>
-                                        <p class="text-sm text-on-surface-variant">8 video • 120 menit</p>
-                                    </div>
-                                </div>
-                                <span class="material-symbols-outlined text-primary">expand_less</span>
-                            </div>
-                            <div class="px-6 pb-6 pt-2 space-y-3 border-t border-surface-container-high">
-                                <div
-                                    class="flex items-center justify-between text-sm p-2 hover:bg-surface-container-low rounded">
-                                    <span class="flex items-center gap-3"><span
-                                            class="material-symbols-outlined text-xs">play_circle</span> Angka, String,
-                                        dan Boolean</span>
-                                    <span class="text-outline">15:00</span>
-                                </div>
-                                <div
-                                    class="flex items-center justify-between text-sm p-2 hover:bg-surface-container-low rounded">
-                                    <span class="flex items-center gap-3"><span
-                                            class="material-symbols-outlined text-xs">play_circle</span> List &amp;
-                                        Dictionary: Rak Buku Digital</span>
-                                    <span class="text-outline">22:00</span>
-                                </div>
-                                <div
-                                    class="flex items-center justify-between text-sm p-2 hover:bg-surface-container-low rounded">
-                                    <span class="flex items-center gap-3"><span
-                                            class="material-symbols-outlined text-xs">quiz</span> Kuis: Logika
-                                        Dasar</span>
-                                    <span class="text-primary-fixed-dim">Locked</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Module 3 -->
-                        <div
-                            class="group bg-white rounded-lg border border-outline-variant/10 hover:border-primary-container transition-all">
-                            <div class="p-6 flex items-center justify-between cursor-pointer">
-                                <div class="flex items-center gap-4">
-                                    <span
-                                        class="text-2xl font-black text-surface-container-highest group-hover:text-primary-container transition-colors">03</span>
-                                    <div>
-                                        <h4 class="font-bold text-lg">Kontrol Alur &amp; Perulangan</h4>
-                                        <p class="text-sm text-on-surface-variant">5 video • 90 menit</p>
-                                    </div>
-                                </div>
-                                <span class="material-symbols-outlined text-outline">expand_more</span>
-                            </div>
-                        </div>
+                    <div id="lessonsContainer" class="space-y-4">
+                        <div class="p-6 text-center text-stone-500">Memuat kurikulum...</div>
                     </div>
                 </section>
             </div>
@@ -337,30 +258,11 @@
                     <div class="bg-surface-container p-8 rounded-lg shadow-sm">
                         <div class="mb-6">
                             <div class="flex items-baseline gap-2 mb-1">
-                                <span class="text-4xl font-black">Rp 449k</span>
-                                <span class="text-on-surface-variant line-through text-sm">Rp 899k</span>
+                                <span class="text-4xl font-black">Rp 0</span>
                             </div>
-                            <p
-                                class="text-xs font-bold text-tertiary-container bg-tertiary px-2 py-0.5 rounded inline-block">
-                                DISKON 50% MINGGU INI</p>
                         </div>
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-center gap-3 text-sm">
-                                <span class="material-symbols-outlined text-primary text-lg">all_inclusive</span>
-                                Akses seumur hidup
-                            </li>
-                            <li class="flex items-center gap-3 text-sm">
-                                <span class="material-symbols-outlined text-primary text-lg">workspace_premium</span>
-                                Sertifikat penyelesaian
-                            </li>
-                            <li class="flex items-center gap-3 text-sm">
-                                <span class="material-symbols-outlined text-primary text-lg">forum</span>
-                                Grup diskusi eksklusif
-                            </li>
-                            <li class="flex items-center gap-3 text-sm">
-                                <span class="material-symbols-outlined text-primary text-lg">download</span>
-                                25+ Resource yang bisa diunduh
-                            </li>
+                        <ul id="featuresContainer" class="space-y-4 mb-8">
+                            <li class="text-sm text-stone-400">Memuat fitur...</li>
                         </ul>
                         <button onclick="window.location.href='lesson.html'"
                             class="w-full bg-primary text-on-primary py-4 rounded-full font-bold text-lg shadow-lg hover:bg-on-primary-fixed-variant transition-colors mb-4 cursor-pointer">Mulai
@@ -494,6 +396,36 @@
                 if (strikeEl) strikeEl.remove();
             }
 
+            // Update Benefits
+            const benefitsContainer = document.getElementById('benefitsContainer');
+            if(benefitsContainer) {
+                if(course.benefits) {
+                    const benefitsList = course.benefits.split(';').map(b => b.trim()).filter(b => b);
+                    benefitsContainer.innerHTML = benefitsList.map(item => `
+                    <div class="flex items-start gap-3 p-4 bg-white rounded-lg shadow-sm">
+                        <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        <span class="font-medium text-on-surface-variant">${item}</span>
+                    </div>`).join('');
+                } else {
+                    benefitsContainer.innerHTML = '<div class="col-span-full text-stone-400 text-sm italic">Belum ada detail manfaat.</div>';
+                }
+            }
+
+            // Update Features
+            const featuresContainer = document.getElementById('featuresContainer');
+            if(featuresContainer) {
+                if(course.features) {
+                    const featureList = course.features.split(';').map(f => f.trim()).filter(f => f);
+                    featuresContainer.innerHTML = featureList.map(item => `
+                    <li class="flex items-center gap-3 text-sm">
+                        <span class="material-symbols-outlined text-primary text-lg">star</span>
+                        ${item}
+                    </li>`).join('');
+                } else {
+                    featuresContainer.innerHTML = '<li class="text-sm text-stone-400 italic">Belum ada fitur ekstra.</li>';
+                }
+            }
+
             // Fetch Lessons
             const { data: lessons } = await supabase
                 .from('lessons')
@@ -501,7 +433,7 @@
                 .eq('course_id', courseId)
                 .order('order_index', { ascending: true });
 
-            const lessonsContainer = document.querySelector('.space-y-4:has(.bg-surface-container-low)');
+            const lessonsContainer = document.getElementById('lessonsContainer');
             if (lessonsContainer) {
                 if (lessons && lessons.length > 0) {
                     lessonsContainer.innerHTML = lessons.map((l, i) => `

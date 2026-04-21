@@ -220,7 +220,19 @@
 
                             <div>
                                 <label class="form-label">Deskripsi Kelas</label>
-                                <textarea id="cDesc" required rows="3" class="input-field resize-none" placeholder="Jelaskan apa yang akan dipelajari siswa secara menarik..."></textarea>
+                                <textarea id="cDesc" required rows="2" class="input-field resize-none" placeholder="Jelaskan apa yang akan dipelajari siswa secara menarik..."></textarea>
+                            </div>
+
+                            <div>
+                                <label class="form-label">Manfaat & Hasil Belajar (Pisahkan dengan titik koma ';')</label>
+                                <textarea id="cBenefits" required rows="2" class="input-field resize-none" placeholder="Misal: Membangun skrip otomasi; Memahami logika dasar; Menulis kode bersih"></textarea>
+                                <p class="text-[10px] text-stone-400 mt-1 ml-1">Muncul di bagian "Apa yang akan dipelajari"</p>
+                            </div>
+
+                            <div>
+                                <label class="form-label">Fitur Eksklusif (Pisahkan dengan titik koma ';')</label>
+                                <textarea id="cFeatures" required rows="2" class="input-field resize-none" placeholder="Misal: Akses seumur hidup; Sertifikat penyelesaian; 25+ Resource unduhan"></textarea>
+                                <p class="text-[10px] text-stone-400 mt-1 ml-1">Muncul di daftar periksa kotak harga</p>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -448,7 +460,9 @@
                 level: document.getElementById('cLevel').value,
                 price: parseFloat(document.getElementById('cPrice').value) || 0,
                 thumbnail_url: document.getElementById('cThumbnail').value,
-                instructor_id: user.id
+                instructor_id: user.id,
+                benefits: document.getElementById('cBenefits').value,
+                features: document.getElementById('cFeatures').value
             };
 
             const { error } = await supabase.from('courses').insert([courseData]);
