@@ -486,8 +486,13 @@
             }
 
             // Update Price in enroll box
-            const priceEl = document.querySelector('h3.text-4xl.font-extrabold.text-on-surface');
-            if(priceEl) priceEl.innerText = course.price > 0 ? `Rp ${parseInt(course.price).toLocaleString('id-ID')}` : 'Gratis';
+            const priceEl = document.querySelector('.text-4xl.font-black');
+            if(priceEl) {
+                priceEl.innerText = course.price > 0 ? `Rp ${parseInt(course.price).toLocaleString('id-ID')}` : 'Gratis';
+                // Remove the fake strikethrough price next to it to avoid confusion
+                const strikeEl = document.querySelector('.line-through');
+                if (strikeEl) strikeEl.remove();
+            }
 
             // Fetch Lessons
             const { data: lessons } = await supabase
