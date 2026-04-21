@@ -450,5 +450,106 @@
 
 </body>
 <script type="module" src="js/auth-state.js"></script>
+<script type="module">
+    import { supabase } from './js/supabase.js';
 
+    document.addEventListener('DOMContentLoaded', async () => {
+        let allCourses = [];
+        
+        // Function to render courses
+        const renderCourses = (coursesToRender) => {
+            const container = document.getElementById('coursesGridContainer');
+            if(!container) return;
+
+            if (coursesToRender.length === 0) {
+                container.innerHTML = '<p class="text-stone-500 col-span-3 text-center py-10">Belum ada kelas di kategori ini.</p>';
+                return;
+            }
+
+            let html = '';
+            coursesToRender.forEach(c => {
+                const price = c.price > 0 ? \`Rp \${parseInt(c.price).toLocaleString('id-ID')}\` : 'Gratis';
+                
+                html += \`
+                <div class="bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all group flex flex-col cursor-pointer border border-stone-100" onclick="window.location.href='course-detail.html?id=\${c.id}'">
+                    <div class="relative overflow-hidden h-56">
+                        <img src="\${c.thumbnail_url || 'https://via.placeholder.com/600'}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-on-surface shadow-sm">
+                            \${c.level}
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="text-[10px] uppercase tracking-widest font-extrabold text-primary mb-2">\${c.category}</span>
+                        <h3 class="text-xl font-bold text-on-surface leading-tight mb-3 group-hover:text-primary transition-colors">\${c.title}</h3>
+                        <p class="text-on-surface-variant text-sm line-clamp-2 mb-6">\${c.description || ''}</p>
+                        <div class="mt-auto flex items-center justify-between border-t border-stone-100 pt-4">
+                            <div class="flex items-center gap-3">
+                                <img src="\${c.profiles?.avatar_url || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'}" class="w-8 h-8 rounded-full object-cover">
+                                <span class="text-xs font-bold text-on-surface-variant">\${c.profiles?.full_name || 'Instruktur'}</span>
+                            </div>
+                            <span class="text-sm font-extrabold text-primary">\${price}</span>
+                        </div>
+                    </div>
+                </div>
+                \`;
+            });
+            
+            container.innerHTML = html;
+        };
+
+        // Fetch Data
+        const { data: courses, error } = await supabase
+            .from('courses')
+            .select('*, profiles(full_name, avatar_url)')
+            .order('created_at', { ascending: false });
+
+        if (!error && courses && courses.length > 0) {
+            allCourses = courses;
+            renderCourses(allCourses);
+        }
+
+        // Setup Category Filters
+        const setupFilters = (selector, isSidebar) => {
+            const buttons = document.querySelectorAll(selector);
+            buttons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Style active state
+                    buttons.forEach(b => {
+                        if(isSidebar) {
+                            b.classList.remove('bg-[#ffffff]', 'dark:bg-stone-800', 'text-[#745b00]', 'dark:text-[#f2c94c]', 'translate-x-1');
+                            b.classList.add('text-stone-500', 'dark:text-stone-400');
+                        } else {
+                            b.classList.remove('bg-primary-container', 'text-on-primary-container');
+                            b.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+                        }
+                    });
+
+                    if(isSidebar) {
+                        btn.classList.add('bg-[#ffffff]', 'dark:bg-stone-800', 'text-[#745b00]', 'dark:text-[#f2c94c]', 'translate-x-1');
+                        btn.classList.remove('text-stone-500', 'dark:text-stone-400');
+                    } else {
+                        btn.classList.add('bg-primary-container', 'text-on-primary-container');
+                        btn.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+                    }
+
+                    // Filter logic
+                    const catText = btn.innerText.trim();
+                    if (catText.includes('Semua') || catText.includes('All')) {
+                        renderCourses(allCourses);
+                    } else {
+                        const filtered = allCourses.filter(c => c.category.toLowerCase() === catText.toLowerCase());
+                        renderCourses(filtered);
+                    }
+                });
+            });
+        };
+
+        // Sidebar categories
+        setupFilters('nav.flex.flex-col.gap-1 a', true);
+        // Mobile chips categories
+        setupFilters('.flex.md\\\\:hidden.gap-3.overflow-x-auto button', false);
+    });
+</script>
 </html>
