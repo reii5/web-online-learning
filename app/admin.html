@@ -447,6 +447,20 @@
             }
         }
 
+        // Global Delete Course Function
+        window.deleteCourse = async function(courseId) {
+            if(!confirm('Apakah Anda yakin ingin menghapus kelas ini? Semua materi di dalamnya mungkin akan ikut terhapus.')) return;
+            
+            // Delete from Supabase
+            const { error } = await supabase.from('courses').delete().eq('id', courseId);
+            if(error) {
+                alert('Gagal menghapus kelas: ' + error.message);
+            } else {
+                // Reload list
+                await loadCourses();
+            }
+        };
+
         await loadCourses();
 
         // 4. Handle Add Course Submission
