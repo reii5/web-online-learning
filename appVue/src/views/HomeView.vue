@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { supabase } from '../js/supabase.js'
+import { supabase } from '../lib/supabaseClient.js'
 
 const router = useRouter()
 const courses = ref([])
@@ -50,15 +50,15 @@ onMounted(() => {
         <div class="hidden md:flex items-center gap-8">
           <router-link to="/" class="text-[#745b00] font-bold border-b-2 border-[#f2c94c] transition-colors">Beranda</router-link>
           <router-link to="/courses" class="text-stone-600 font-medium hover:text-[#745b00] transition-colors">Kelas</router-link>
-          <a class="text-stone-600 font-medium hover:text-[#745b00] transition-colors" href="#">Instruktur</a>
-          <a class="text-stone-600 font-medium hover:text-[#745b00] transition-colors" href="#">Mentor Chat</a>
+          <router-link to="/instructor" class="text-stone-600 font-medium hover:text-[#745b00] transition-colors">Instruktur</router-link>
+          <router-link to="/chat" class="text-stone-600 font-medium hover:text-[#745b00] transition-colors">Mentor Chat</router-link>
         </div>
 
         <div class="flex items-center gap-6">
           <span class="material-symbols-outlined text-stone-600 cursor-pointer hover:text-primary transition-all">notifications</span>
-          <button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-bold hover:scale-95 duration-200 ease-out transition-transform cursor-pointer">
+          <router-link to="/login" class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-bold hover:scale-95 duration-200 ease-out transition-transform cursor-pointer inline-block">
             Masuk
-          </button>
+          </router-link>
         </div>
       </div>
     </nav>
@@ -123,19 +123,30 @@ onMounted(() => {
             </div>
             <router-link to="/courses" class="text-primary font-bold hover:underline hidden md:block">Lihat Semua Kelas</router-link>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:grid-rows-[250px_250px]">
-            <div v-if="isLoading" class="col-span-full text-center py-20 text-stone-500 flex flex-col items-center justify-center min-h-[300px]">
+          <div class="flex flex-col gap-4">
+            <div v-if="isLoading" class="text-center py-20 text-stone-500 flex flex-col items-center justify-center">
               <span class="material-symbols-outlined text-4xl mb-4 animate-spin text-primary">sync</span>
               <p class="font-medium">Memuat kelas unggulan...</p>
             </div>
-            <router-link v-else v-for="(c, i) in courses" :key="c.id" :to="'/course-detail?id=' + c.id" :class="[getGridClass(i), 'bg-surface-container-lowest rounded-lg overflow-hidden group shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-xl transition-all relative cursor-pointer flex flex-col']">
-              <img :src="c.thumbnail_url || 'https://via.placeholder.com/600'" :class="['w-full object-cover group-hover:scale-105 transition-transform duration-500', i === 0 ? 'h-2/3' : 'h-48']">
-              <div class="p-6 md:p-8 flex-1 flex flex-col">
-                <span class="text-[10px] uppercase tracking-widest font-bold text-primary mb-2 block">{{ c.category }}</span>
-                <h3 :class="[i === 0 ? 'text-3xl' : 'text-xl', 'font-bold mb-4']">{{ c.title }}</h3>
-                <div class="mt-auto flex justify-between items-center text-sm">
-                  <span class="font-medium text-on-surface-variant">{{ c.profiles?.full_name || 'Instruktur' }}</span>
-                  <span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-bold">{{ formatPrice(c.price) }}</span>
+            <router-link v-else v-for="(c, i) in courses" :key="c.id" :to="'/course-detail?id=' + c.id" class="bg-surface-container-lowest rounded-2xl p-4 md:p-6 flex flex-col md:flex-row items-center gap-6 border border-stone-100 shadow-sm hover:shadow-xl hover:border-primary-container/50 transition-all cursor-pointer group">
+              <div class="overflow-hidden rounded-xl w-full md:w-56 h-40 shrink-0">
+                <img :src="c.thumbnail_url || 'https://via.placeholder.com/600'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="flex-1 flex flex-col w-full">
+                <div class="flex justify-between items-start mb-2">
+                  <span class="text-[10px] uppercase tracking-widest font-extrabold text-primary bg-primary-container/20 px-2 py-1 rounded-md">{{ c.category }}</span>
+                  <span class="bg-stone-100 text-stone-600 px-3 py-1 rounded-full font-bold text-xs">{{ formatPrice(c.price) }}</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{{ c.title }}</h3>
+                <p class="text-stone-500 text-sm line-clamp-2 mb-6 leading-relaxed">{{ c.description || 'Materi komprehensif ini dirancang untuk meningkatkan keahlian Anda ke level berikutnya melalui praktik langsung.' }}</p>
+                <div class="flex justify-between items-center mt-auto">
+                  <div class="flex items-center gap-3">
+                    <img :src="c.profiles?.avatar_url || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'" class="w-8 h-8 rounded-full border-2 border-white shadow-sm">
+                    <span class="font-medium text-stone-700 text-sm">{{ c.profiles?.full_name || 'Instruktur Profesional' }}</span>
+                  </div>
+                  <div class="w-10 h-10 rounded-full bg-stone-50 group-hover:bg-primary text-stone-400 group-hover:text-white flex items-center justify-center transition-colors">
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                  </div>
                 </div>
               </div>
             </router-link>
