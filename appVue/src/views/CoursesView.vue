@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
-import { supabase } from '../js/supabase.js'
+import { supabase } from '../lib/supabaseClient.js'
 
 const allCourses = ref([])
 const isLoading = ref(true)

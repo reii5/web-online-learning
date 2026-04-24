@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { supabase } from '../js/supabase.js'
+import { supabase } from '../lib/supabaseClient.js'
 
 const router = useRouter()
 const isAccessDenied = ref(false)
